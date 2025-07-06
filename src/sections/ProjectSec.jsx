@@ -2,9 +2,9 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useSpring, a } from "@react-spring/three";
 import { Float, Html } from "@react-three/drei";
-import { HoverableBrain } from "../components/HoverableBrain";
-import { Robot } from "../components/Robot";
-import { Eye } from "../components/Chameleobot_eye_animation_test";
+import { HoverableBrain } from "../3DModels/HoverableBrain";
+import { Robot } from "../3DModels/Robot";
+import { Eye } from "../3DModels/Chameleobot_eye_animation_test";
 import useWindowSize from "../components/useWindowSize";
 import { useDynamicSky } from "../components/useDynmaicSky";
 

@@ -6,8 +6,8 @@ import { easing } from "maath";
 import { OrbitControls } from '@react-three/drei';
 import HeroText from "../components/HeroText";
 import Loader from "../components/Loader";
-import DraggableRobot from "../components/DragableRobot";
-import { Scene } from "../components/Scene";
+import DraggableRobot from "../3DModels/DragableRobot";
+import { Scene } from "../3DModels/Scene";
 import { useDynamicSky } from "../components/useDynmaicSky";
 import { useMemo } from 'react'
 // Calculate sun position based on current time
