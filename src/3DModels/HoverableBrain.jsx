@@ -8,9 +8,10 @@ export function HoverableBrain(props) {
 
   return (
     <a.group
+      scale={hovered ? 0.012 : 0.010}
       {...props}
       dispose={null}
-      scale={hovered ? 0.017 : 0.015} // scale up on hover
+       
       onPointerOver={(e) => {
         e.stopPropagation()
         setHovered(true)

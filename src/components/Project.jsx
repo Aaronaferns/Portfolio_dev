@@ -1,53 +1,181 @@
-import React, { useState } from "react";
-import ProjectDetails from "./ProjectDetails";
-
 const Project = ({
   title,
-  description,
-  subDescription,
-  href,
-  image,
-  tags,
-  setPreview,
+  intro,
+  videoLeft,
+  videoRight,
+  results,
+  architecture,
+  demoLink,
 }) => {
-  const [isHidden, setIsHidden] = useState(false);
+  const getEmbedUrl = (url) => {
+    if (!url) return null;
+
+    try {
+      const urlObj = new URL(url);
+      let videoId = "";
+
+      if (urlObj.hostname === "youtu.be") {
+        videoId = urlObj.pathname.slice(1); // remove leading "/"
+      } else if (
+        urlObj.hostname === "www.youtube.com" ||
+        urlObj.hostname === "youtube.com"
+      ) {
+        videoId = urlObj.searchParams.get("v");
+      }
+
+      return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&showinfo=0&disablekb=1` : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const embedUrlLeft = getEmbedUrl(videoLeft);
+  const embedUrlRight=getEmbedUrl(videoRight);
+
+
   return (
-    <>
-      <div
-        className="flex-wrap items-center justify-between py-10 space-y-14 sm:flex sm:space-y-0"
-        onMouseEnter={() => setPreview(image)}
-        onMouseLeave={() => setPreview(null)}
-      >
+    <div className="w-full px-4 py-8 max-w-7xl mx-auto space-y-12">
+      {/* Title & Intro */}
+      <h1 className="text-4xl font-bold text-center">{title}</h1>
+      <p className="text-lg text-gray-300 text-center max-w-3xl mx-auto">{intro}</p>
+
+      {/* YouTube Video Section */}
+      <div className="w-full flex flex-col md:flex-row gap-6 justify-center">
         <div>
-          <p className="text-2xl">{title}</p>
-          <div className="flex gap-5 mt-2 text-sand">
-            {tags.map((tag) => (
-              <span key={tag.id}>{tag.name}</span>
-            ))}
-          </div>
+        {embedUrlLeft ? (
+          <iframe
+            src={embedUrlLeft}
+            width="560"
+            height="315"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : (
+          <p>Invalid video URL</p>
+        )}
         </div>
-        <button
-          onClick={() => setIsHidden(true)}
-          className="flex items-center gap-1 cursor-pointer hover-animation"
-        >
-          Read More
-          <img src="assets/arrow-right.svg" className="w-5" />
-        </button>
+        <div>
+        {embedUrlRight ? (
+          <iframe
+            src={embedUrlRight}
+            width="560"
+            height="315"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : (
+          <p>Invalid video URL</p>
+        )}
+        </div>
       </div>
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full" />
-      {isHidden && (
-        <ProjectDetails
-          title={title}
-          description={description}
-          subDescription={subDescription}
-          image={image}
-          tags={tags}
-          href={href}
-          closeModal={() => setIsHidden(false)}
-        />
+
+      {/* Results */}
+      <section>
+        <h2 className="text-2xl font-semibold mb-2">Results</h2>
+        <p>{results}</p>
+      </section>
+
+      {/* Architecture */}
+      <section>
+        <h2 className="text-2xl font-semibold mb-2">Architecture</h2>
+        <p>{architecture}</p>
+      </section>
+
+      {/* Demo (optional) */}
+      {demoLink && (
+        <section>
+          <h2 className="text-2xl font-semibold mb-2">Live Demo</h2>
+          <iframe
+            src={demoLink}
+            className="w-full h-[500px] rounded-lg border"
+            title="Live Demo"
+          />
+        </section>
       )}
-    </>
+    </div>
   );
 };
 
+
 export default Project;
+
+
+
+
+
+
+// const Project = ({ videoLeft }) => {
+//   // Helper to convert short or normal YouTube URLs to embed URLs
+//   const getEmbedUrl = (url) => {
+//     if (!url) return null;
+
+//     try {
+//       const urlObj = new URL(url);
+//       let videoId = "";
+
+//       if (urlObj.hostname === "youtu.be") {
+//         videoId = urlObj.pathname.slice(1); // remove leading "/"
+//       } else if (
+//         urlObj.hostname === "www.youtube.com" ||
+//         urlObj.hostname === "youtube.com"
+//       ) {
+//         videoId = urlObj.searchParams.get("v");
+//       }
+
+//       return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+//     } catch {
+//       return null;
+//     }
+//   };
+
+//   const embedUrlLeft = getEmbedUrl(videoLeft);
+//   const embedUrlRight=getEmbedUrl(videoRight);
+
+//   return (
+//     <div>
+//     <div>
+//       {embedUrl ? (
+//         <iframe
+//           src={embedUrl}
+//           width="560"
+//           height="315"
+//           title="YouTube video player"
+//           frameBorder="0"
+//           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//           allowFullScreen
+//           loading="lazy"
+//         />
+//       ) : (
+//         <p>Invalid video URL</p>
+//       )}
+//     </div>
+//     <div>
+//       {embedUrl ? (
+//         <iframe
+//           src={embedUrl}
+//           width="560"
+//           height="315"
+//           title="YouTube video player"
+//           frameBorder="0"
+//           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//           allowFullScreen
+//           loading="lazy"
+//         />
+//       ) : (
+//         <p>Invalid video URL</p>
+//       )}
+//     </div>
+    
+//     </div>
+//   );
+// };
+
+
+
+// export default Project;
