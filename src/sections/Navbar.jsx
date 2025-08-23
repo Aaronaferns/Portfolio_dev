@@ -1,25 +1,30 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { useTheme } from "../ThemeContext";
+// const { isBright, mainTextColor, secondaryTextColor } = useTheme();
+// {`text-5xl font-bold py-10  ${mainTextColor} `}
 function Navigation() {
+  const { isBright, mainTextColor, secondaryTextColor } = useTheme();
   return (
+    
     <ul className="nav-ul">
       <li className="nav-li">
-        <a className="nav-link" href="#home">
+        <a className={`nav-link ${secondaryTextColor}`} href="#home">
           Home
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#about">
+        <a className={`nav-link ${secondaryTextColor}`} href="#about">
           About
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#work">
+        <a className={`nav-link ${secondaryTextColor}`} href="#projects">
           Work
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#contact">
+        <a className={`nav-link ${secondaryTextColor}`} href="#contact">
           Contact
         </a>
       </li>
@@ -27,14 +32,15 @@ function Navigation() {
   );
 }
 const Navbar = () => {
+  const { isBright, mainTextColor, secondaryTextColor } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">
         <div className="flex items-center justify-between py-2 sm:py-0">
           <a
-            href="/"
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
+            href="#home"
+            className={`text-xl font-bold transition-colors text-neutral-400 ${secondaryTextColor} hover:text-white`}
           >
             Aaron
           </a>
@@ -48,7 +54,7 @@ const Navbar = () => {
               alt="toggle"
             />
           </button>
-          <nav className="hidden sm:flex">
+          <nav className={`hidden sm:flex  `}>
             <Navigation />
           </nav>
         </div>

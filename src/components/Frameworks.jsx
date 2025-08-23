@@ -1,36 +1,40 @@
 import { OrbitingCircles } from "./OrbitingCircles";
+import SkillIcons  from "./SVGMap";
 
 export default function Frameworks() {
   const skills = [
-    "deek-seek.webp",
-    "docling.webp",
-    "ollama.png",
-    "openai.webp",
-    "pytorch.png",
-    "scikit.webp",
-    "TensorFlow.webp",
-    "llamaindex.webp",
-    "gymnasium.webp",
-    "jupyter.webp",
-    "opencv.png",
-    "C++.webp",
-    "pytnon.webp",
-    "gcp.png",
-    "docker.webp",
-    "spark.webp",
-    "pandas.webp",
-    "react.svg"
-  ];
+  "DeepSeek",
+  "DocLing",
+  "Ollama",
+  "OpenAI",
+  "PyTorch",
+  "Scikit-Learn",
+  "TensorFlow",
+  "LlamaIndex",
+  "Gymnasium",
+  "Jupyter",
+  "OpenCV",
+  "C++",
+  "Python",
+  "GCP",
+  "Docker",
+  "Spark",
+  "Pandas",
+  "React"
+];
+
   return (
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
       <OrbitingCircles iconSize={40}>
+        
         {skills.map((skill, index) => (
-          <Icon key={index} src={`assets/ai-logos/${skill}`} />
+          <Icon key={index} src={SkillIcons[skill]} />
+          
         ))}
       </OrbitingCircles>
       <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
         {skills.reverse().map((skill, index) => (
-          <Icon key={index} src={`assets/ai-logos/${skill}`} />
+          <Icon key={index} src={SkillIcons[skill]} />
         ))}
       </OrbitingCircles>
     </div>

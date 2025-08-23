@@ -2,20 +2,24 @@ import { useRef } from "react";
 import Card from "../components/Card";
 import Globe from "../components/Globe"
 import CopyEmailButton from "../components/CopyEmailButton";
-
+import Projects from "../sections/Projects";
+import FeaturedCarousel from "../components/FeaturedCarousel";
 import ImageBlockExporter from "../components/ImageBlockExporter";
 import SkyBackground from "../components/SkyBackground";
 import Frameworks from "../components/Frameworks"
-const About = () => {
+import { useTheme } from "../ThemeContext"; 
+const About = ({id}) => {
   const grid2Container = useRef();
+  const { isBright, mainTextColor, secondaryTextColor } = useTheme(); 
+  const projects = Projects;
 
   // [#748D92]
   // [#D3D9D4]
   // [#2E3944]
   // [#212A31] 
   return (
-    <section className="c-space section-spacing" id="about">
-      <h2 className="text-heading">About Me</h2>
+    <section id={id} className="c-space section-spacing py-0 sm:py-[10rem] md:py-0" id="about">
+      <h2 className={`text-heading ${mainTextColor} `}>About Me</h2>
      <div className="grid grid-cols-1 auto-rows-auto gap-6 md:grid-cols-6 md:auto-rows-auto items-start mt-12">
 
         {/* Grid 1 */}
@@ -24,10 +28,10 @@ const About = () => {
   flex flex-col items-center justify-center gap-6 p-6
   bg-gradient-to-b to-[#2E3944] from-[#212A31] rounded-2xl
   row-span-1 h-auto
-  md:row-span-2 md:col-span-3 md:h-[15rem] md:h-full
+  md:row-span-2 md:col-span-3  md:h-full
   relative overflow-hidden hover:-translate-y-1 duration-200
 ">
-          <div className="flex justify-center items-center  w-full h-[500px]">
+          <div className="flex justify-center items-center  w-full h-[350px]">
             {/* <ImageBlockExporter imageUrls={["/assets/coing_pov1.png","assets/walking_robot_reward.webp","/assets/07_stateestimation_fig.webp", "/assets/cnn_training.webp","/assets/image-processing-1.webp","/assets/Gaussianimageprocessing.webp"]}/>
             */}
             <img
@@ -37,8 +41,8 @@ const About = () => {
             />
           </div>
 
-          <div className="flex flex-col  bg-transparent  text-center px-4">
-            <p className="headtext">Hi, I'm Aaron</p>
+          <div className="flex flex-col flex-grow items-center justify-around bg-transparent  text-center px-4">
+            <p className="text-3xl mx-4">Hi, I'm Aaron</p>
             <p className="subtext">I'm a machine learning engineer with a focus on deep learning, computer vision, and reinforcement learning. I also bring experience in cloud infrastructure and full-stack development, allowing me to take ML systems from research to scalable production.
             </p>
           </div>
@@ -50,11 +54,15 @@ const About = () => {
         {/* Grid 2 */}
         {/* Grid 2 */}
 
-<div className="p-6 bg-gradient-to-b from-[#D3D9D4] to-[#748D92] rounded-2xl grid-2 text-center
-                row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
-  <h3 className="text-2xl font-semibold text-gray-800 mb-4">Featured Work</h3>
-  <img src="/assets/walking_robot_reward.webp" className="w-full max-w-md mx-auto rounded-xl shadow-md" alt="Walking Robot" />
-  <p className="mt-2 text-gray-700">Reinforcement learning model controlling a bipedal robot. Reward function optimization led to stable gait after 8k episodes.</p>
+<div
+  className="
+    p-3 bg-gradient-to-b from-[#D3D9D4] to-[#748D92] rounded-2xl grid-2 text-center
+    row-span-2 md:col-span-3 relative overflow-hidden hover:-translate-y-1 duration-200
+    flex justify-center items-center
+    w-full aspect-[3/4] md:aspect-[4/3]  min-h-[500px]
+  "
+>
+  <FeaturedCarousel className="w-full h-full" />
 </div>
 
 

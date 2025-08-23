@@ -1,10 +1,14 @@
 import { Timeline } from "../components/Timeline";
 import { experiences } from "../constants";
-const Experiences = () => {
+
+const Experiences = ({id}) => {
+  const reversedExperiences = [...experiences].reverse();
   return (
+    <section id = {id} className="w-full bg-trasparent py-20 px-6">
     <div className="w-full">
-      <Timeline data={experiences} />
+      <Timeline data={reversedExperiences} />
     </div>
+    </section>  
   );
 };
 

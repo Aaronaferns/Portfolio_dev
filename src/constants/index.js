@@ -245,7 +245,7 @@ export const experiences = [
   {
     title: "Software Developer",
     job: "Tata Consultancy Services",
-    date: "2022-2023",
+    date: "2022 Jan - 2023 Jan",
     contents: [
       "Developed robust financial transaction systems using Java, Spring Framework, Hibernate, and Apache Camel, improving processing efficiency.",
       "Engineered SOAP/HTTP APIs and Microservices, enhancing system interoperability and reducing latency by 10-15%",
@@ -253,27 +253,24 @@ export const experiences = [
     ],
   },
   {
-    title: "Research Assistant - Reinforcement Learning",
+    title: "RL Engineer",
     job: "Indiana University Bloomington, IN",
-    date: "2024 Aug -2025 May",
+    date: "2024 Aug - 2025 May",
     contents: [
-      "Developed reinforcement learning algorithms (DQL, REINFORCE, PPO, TRPO) from research papers, implementing them from scratch and validating in a tabular environment for multi-target path planning.",
-      "Explored attention-based reinforcement learning using attention networks and transformers to enhance path efficiency in dynamic environments.",
-      "Researched and implemented goal-based reinforcement learning with various goal setters such as Stein-variational goal generation and GAN-based goal setters, integrated with Hindsight Experience Replay."
+      "Implemented Goal-based RL with Stein-Variational Goal generation, GAN goal setter, and Hindsight Experience Replay to solve sparse-reward environments with complex goals",
+      "Engineered models based on RL algorithms like Deep Q-Learning (DQL), REINFORCE, Proximal Policy Optimization (PPO), Trust Region Policy Optimization (TRPO) in PyTorch, validated in a tabular environment for multi-target path planning",
     ],
   },
   {
-    title: "Research Assistant - Optics and Machine Learning",
+    title: "ML Engineer",
     job: "Indiana University Bloomington, IN",
-    date: "2024-Present",
+    date: "2024 May - Present",
     contents: [
-      "Working on biomedical image processing with a focus on OCT (Optical Coherence Tomography) video analysis and machine learning-based segmentation.",
-      "Developing preprocessing and feature extraction pipelines for high-resolution OCT frames to enhance segmentation accuracy.",
+      "Designed spatiotemporal analysis pipelines for OCT video data to enable virtual histology, integrating Fourier-domain feature extraction with deep learning models",
+      "Developed U-Net-based segmentation networks enhanced with a CycleGAN framework for domain adaptation, improving cross-domain segmentation accuracy on medical OCT datasets",
       "Applying deep learning models for tissue boundary detection and anomaly segmentation in OCT sequences.", 
       "Developed synthetic dataset generation pipelines for metasurface analysis using Lumerical FDTD, improving dataset production efficiency by 80% with parallel processing on BigRed200 (Slurm-based HPC).",
       "Engineered U-Net-based surrogate models, reducing computational time by 70% while maintaining 95% accuracy, and designed an inverse metasurface model achieving up to 15% accuracy gains over prior work.",
-      "Compared deep learning and traditional methods for metasurface design, targeting a 30% improvement in efficiency and accuracy."
-
     ],
   },
 ];

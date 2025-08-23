@@ -8,7 +8,9 @@ import { Eye } from "../3DModels/Chameleobot_eye_animation_test";
 import useWindowSize from "../components/useWindowSize";
 import { useDynamicSky } from "../components/useDynmaicSky";
 import { useNavigate } from "react-router-dom";
-
+import { useTheme } from "../ThemeContext";
+// const { isBright, mainTextColor, secondaryTextColor } = useTheme();
+// {`text-5xl font-bold py-10  ${mainTextColor} `}
 // CameraController updates the camera when isMdUp changes
 function CameraController({ isMdUp }) {
   const { camera } = useThree();
@@ -28,8 +30,9 @@ function CameraController({ isMdUp }) {
 }
 
 export default function ProjectsSection({ isActive = true }) {
+  const { isBright, mainTextColor, secondaryTextColor } = useTheme();
   const navigate = useNavigate();
-  const { sunPosition } = useDynamicSky();
+  const { sunPosition } = useDynamicSky(7);
   const [width] = useWindowSize();
   const spacing = 3.2;
 
@@ -64,11 +67,11 @@ export default function ProjectsSection({ isActive = true }) {
 
   return (
     <section className=" w-full h-[60rem] md:h-[25rem]  py-5 bg-transparent mb-14 px-10 lg:px-15">
-      <h2 className="text-5xl font-bold py-10  ">Projects</h2>
-      <div className="flex flex-col items-center h-[50rem] md:h-[20rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-xl mx-auto px-1">
+      <h2 className={`text-5xl font-bold py-10  ${mainTextColor} `} >Projects</h2>
+      <div className="flex flex-col items-center h-[50rem] md:h-[20rem] rounded-2xl mx-auto px-1 background-transparent">
         
         <div className={isMdUp ? "h-[50rem] w-full" : "h-[20rem] w-[70rem]"}>
-          <Canvas frameloop={isActive ? "always" : "demand"}>
+          <Canvas gl={{ alpha: true }} style={{ background: "transparent" }} frameloop={isActive ? "always" : "demand"}>
             {/* CameraController dynamically updates camera on resize */}
             <CameraController isMdUp={isMdUp} />
             <ambientLight intensity={0.5} />

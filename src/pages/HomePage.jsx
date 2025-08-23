@@ -3,7 +3,7 @@ import Navbar from "../sections/Navbar";
 import Hero from "../sections/Hero";
 import About from "../sections/About";
 // import Projects from "../sections/Projects";
-import ProjectsSection from "../sections/ProjectSec";
+import ProjectNew from "../sections/ProjectNew";
 import Experiences from "../sections/Experiences";
 
 import Contact from "../sections/Contact";
@@ -17,13 +17,13 @@ const HomePage = () => {
     <div className="bg-transparent container mx-auto max-w-7xl">
       <BackgroundCanvas />
       <Navbar />
-      <Hero />
-      <About  />
-     <ProjectsSection />
+      <Hero id = "home"/>
+      <About id = "about" />
+     <ProjectNew id="projects"/>
       {/* <Projects /> */}
-      <Experiences />
+      <Experiences id="experience" />
       {/* <Testimonial /> */}
-      <Contact />
+      <Contact id="contact"/>
       <Footer/>
     </div>
   );

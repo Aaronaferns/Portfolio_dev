@@ -20,7 +20,8 @@ function getSunPositionFromTime(simulatedHour) {
 }
 
 export default function SkyBackground({ testHour }) {
-  const { sunPosition, skySettings,skyColor } = useDynamicSky(testHour);
+  
+  const { sunPosition, skySettings } = useDynamicSky(testHour);
   const { scene } = useThree(); 
 //   const sunPosition=[1000,1000,100]
   console.log("sky Mounted")
@@ -34,9 +35,7 @@ useEffect(() => {
     return () => clearInterval(interval);
   }
 }, [testHour]);
- useEffect(() => {
-    scene.background = new THREE.Color(skyColor);
-  }, [skyColor]);
+
 //   // Optional: Dynamic color-rich sky settings by hour
 //   const hour = new Date().getHours();
 //   const isMorning = hour >= 6 && hour < 12;

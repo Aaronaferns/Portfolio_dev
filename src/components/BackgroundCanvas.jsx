@@ -2,8 +2,10 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import SkyBackground from "./SkyBackground";
+import { useDynamicSky } from "./useDynmaicSky";
 
 export default function BackgroundCanvas() {
+  const { sunPosition, skySettings} = useDynamicSky(7);
   return (
     <Canvas
       style={{
@@ -14,10 +16,10 @@ export default function BackgroundCanvas() {
         height: "100vh",
         zIndex: -1,
       }}
-      camera={{ position: [100, 10, 100], fov: 108 }}
+      camera={{position: [0, -30, 20], fov: 105 }}
     >
       <ambientLight intensity={2} />
-      <directionalLight position={[5, 10, 5]} intensity={10} />
+      <directionalLight position={sunPosition} intensity={10} />
       <SkyBackground />
     </Canvas>
   );

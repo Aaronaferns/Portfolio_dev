@@ -1,12 +1,12 @@
 import { FlipWords } from "./FlipWords";
 import { motion } from "motion/react";
+import { useTheme } from "../ThemeContext"; 
 
-const HeroText = ({ isBright }) => {
+const HeroText = ({ }) => {
+  const { isBright, mainTextColor, secondaryTextColor } = useTheme();
   // Use this boolean to conditionally apply classes or styles
 
-  // Example: text color classes
-  const mainTextColor = isBright ? "text-gray-900" : "text-white";
-  const secondaryTextColor = isBright ? "text-gray-700" : "text-neutral-300";
+  
 
   const words = ["Hi-Perf", "Secure", "SOTA", "Scalable"];
   const variants = {
@@ -45,7 +45,7 @@ const HeroText = ({ isBright }) => {
           >
             <FlipWords
               words={words}
-              className={`font-black ${isBright ? "text-black" : "text-white"} text-8xl`}
+              className={`font-black ${mainTextColor} text-8xl`}
             />
           </motion.div>
           <motion.p

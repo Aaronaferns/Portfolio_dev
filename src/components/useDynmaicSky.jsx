@@ -1,65 +1,53 @@
-// hooks/useDynamicSky.js
 import { useEffect, useState } from "react";
+import skySettingsComp from "./skySettingsComp";
 
 export function getSunPositionFromTime(simulatedHour) {
   const now = new Date();
-  const hour = simulatedHour !== undefined
-    ? simulatedHour
-    : now.getHours() + now.getMinutes() / 60;
-  
+  const hour =
+    simulatedHour !== undefined
+      ? simulatedHour
+      : now.getHours() + now.getMinutes() / 60;
+
   const angle = (hour / 24) * 2 * Math.PI;
-  const radius = 100;  // bigger radius for better sky effect
+  const radius = 100;
 
   const x = Math.cos(angle) * radius;
-  const y = Math.max(Math.sin(angle) * radius, 5); // prevent sun below horizon
-  const z = Math.sin(angle) * radius * 0.3; // slight depth shift for better effect
+  const y = Math.sin(angle) * radius; // sun naturally goes below horizon
+  const z = Math.sin(angle) * radius * 0.3;
 
   return [x, y, z];
 }
 
 export function useDynamicSky(testHour) {
-  const [sunPosition, setSunPosition] = useState(getSunPositionFromTime(testHour));
-  // Map sky colors based on time
-  let skyColor = "#87CEEB"; // default light blue
-
-  
-
+  const [sunPosition, setSunPosition] = useState(
+    getSunPositionFromTime(testHour)
+  );
 
   useEffect(() => {
     if (testHour === undefined) {
       const interval = setInterval(() => {
         setSunPosition(getSunPositionFromTime());
-      }, 60000); // update every minute
+      }, 60000);
       return () => clearInterval(interval);
+    } else {
+      setSunPosition(getSunPositionFromTime(testHour));
     }
   }, [testHour]);
 
   const hour = testHour ?? new Date().getHours();
 
-  // Define time ranges
-  const isMorning = hour >= 6 && hour < 12;
-  const isAfternoon = hour >= 12 && hour < 17;
-  const isEvening = hour >= 17 && hour < 20;
-  const isNight = hour < 6 || hour >= 20;
+  let skySettings;
+  if (hour >= 5 && hour < 7) skySettings = skySettingsComp.earlyMorning;
+  else if (hour >= 7 && hour < 12) skySettings = skySettingsComp.morning;
+  else if (hour >= 12 && hour < 15) skySettings = skySettingsComp.noon;
+  else if (hour >= 15 && hour < 17) skySettings = skySettingsComp.afternoon;
+  else if (hour >= 17 && hour < 18) skySettings = skySettingsComp.evening;
+  else if (hour >= 18 && hour < 20) skySettings = skySettingsComp.sunset;
+  else skySettings = skySettingsComp.night;
 
-  if (isMorning) {
-    skyColor = "#B1D4E0"; // soft morning blue
-  } else if (isAfternoon) {
-    skyColor = "#87CEEB"; // bright blue
-  } else if (isEvening) {
-    skyColor = "#FF8C42"; // sunset orange
-  } else if (isNight) {
-    skyColor = "#0B1A38"; // deep night blue
-  }
+  // 🌙 Moon: opposite sun horizontally, fixed height above scene
+  const moonHeight = 10; // adjust for scene visibility
+  const moonPosition = [-sunPosition[0], moonHeight, -sunPosition[2]];
 
-  // Sky parameters tuned for each time of day
- const skySettings = {
-  rayleigh: isNight ? 0.2 : isEvening ? 0.8 : isMorning ? 1.5 : 3,
-  turbidity: isNight ? 1.5 : isEvening ? 15 : isMorning ? 9 : 5,
-  mieCoefficient: isNight ? 0.001 : isEvening ? 0.02 : isMorning ? 0.015 : 0.007,
-  mieDirectionalG: 0.75,
-};
-
-
-  return { sunPosition, skySettings, skyColor };
+  return { sunPosition, moonPosition, skySettings };
 }
