@@ -8,7 +8,7 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const hour = new Date().getHours();
-    setIsBright(hour >= 6 && hour < 20);
+    setIsBright(hour >= 5 && hour < 17);
   }, []);
 
   const mainTextColor = isBright ? "text-gray-900" : "text-white";
