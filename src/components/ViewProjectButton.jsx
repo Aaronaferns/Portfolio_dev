@@ -1,20 +1,30 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-const ViewProjectButton = ({ href, name }) => {
+const ViewProjectButton = ({ href, name, isGithub = false }) => {
   const [clicked, setClicked] = useState(false);
 
-  const handleClick = (isGithub = True) => {
+  const handleClick = () => {
     setClicked(true);
-    // Delay navigation so animation can play
+
     setTimeout(() => {
       setClicked(false);
+
       if (isGithub) {
-    window.open(href, "_blank"); // Open GitHub in new tab
-  } else {
-    window.location.href = href; // Navigate normally
-  }
-    }, 500); // adjust duration to match animation
+        // open in new tab if it's GitHub/external
+        window.open(href, "_blank");
+      } else {
+        // smooth scroll if href is in-page (e.g. #projects)
+        if (href.startsWith("#")) {
+          const el = document.querySelector(href);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        } else {
+          window.location.href = href; // normal navigation
+        }
+      }
+    }, 500);
   };
 
   return (

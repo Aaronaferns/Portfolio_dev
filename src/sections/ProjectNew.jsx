@@ -60,7 +60,7 @@ export default function ProjectsSection({id}) {
         href={project.link}
         className="mt-auto mx-auto inline-block px-4 py-2 "
       >
-        <ViewProjectButton  href={project.link} name="View on Github"/>
+        <ViewProjectButton  href={project.link} name="View on Github" isGithub/>
       </div>
     </div>
   </motion.div>

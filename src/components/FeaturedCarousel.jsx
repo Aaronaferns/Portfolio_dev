@@ -24,7 +24,7 @@ const FeaturedCarousel = () => {
         className="object-cover w-full h-[80%] rounded-2xl my-auto"
       />
         <p className="text-sm font-semibold my-4">{project.title}</p>
-      <ViewProjectButton/>
+      <ViewProjectButton href="#projects"/>
     </div>
   );
 };

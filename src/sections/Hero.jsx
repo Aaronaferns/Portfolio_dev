@@ -126,7 +126,7 @@ const Hero = ({id}) => {
             <directionalLight
               position={sunPosition}
               intensity={1.0}
-              color={skyColor}
+             
               castShadow
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
