@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-const ViewProjectButton = ({ href, name, isGithub = false }) => {
+const ViewProjectButton = ({ href, name, isGithub = false, onClick }) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
     setClicked(true);
+
+    // Call the onClick prop if provided
+    if (onClick) {
+      onClick();
+    }
 
     setTimeout(() => {
       setClicked(false);

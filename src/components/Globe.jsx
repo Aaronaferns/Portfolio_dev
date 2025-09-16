@@ -2,7 +2,7 @@
 
 import createGlobe from "cobe";
 import { useMotionValue, useSpring } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { twMerge } from "tailwind-merge";
 
@@ -12,12 +12,12 @@ const GLOBE_CONFIG = {
   width: 800,
   height: 800,
   onRender: () => {},
-  devicePixelRatio: 2,
+  devicePixelRatio: 1, // Reduced from 2 to 1
   phi: 0,
   theta: 0.3,
   dark: 1,
   diffuse: 0.4,
-  mapSamples: 16000,
+  mapSamples: 8000, // Reduced from 16000 to 8000
   mapBrightness: 1.2,
   baseColor: [1, 1, 1],
   markerColor: [1, 1, 1],
@@ -42,6 +42,7 @@ export default function Globe({ className, config = GLOBE_CONFIG }) {
   const canvasRef = useRef(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -87,7 +88,10 @@ export default function Globe({ className, config = GLOBE_CONFIG }) {
       },
     });
 
-    setTimeout(() => (canvasRef.current.style.opacity = "1"), 0);
+    setTimeout(() => {
+      canvasRef.current.style.opacity = "1";
+      setIsLoaded(true);
+    }, 0);
     return () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);

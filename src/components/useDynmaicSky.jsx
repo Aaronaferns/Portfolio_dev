@@ -12,9 +12,12 @@ export function getSunPositionFromTime(simulatedHour) {
   const radius = 100;
 
   const x = Math.cos(angle) * radius;
-  const y = Math.sin(angle) * radius; // sun naturally goes below horizon
-  const z = Math.sin(angle) * radius * 0.3;
+  let y = Math.sin(angle) * radius;
+  const z = 0; // keep orbit simple
 
+  // push the sun much lower at night to avoid twilight "brown"
+  if (y < 0) y = -radius * 5; // push even further down
+  console.log([x,y,z])
   return [x, y, z];
 }
 
@@ -27,7 +30,7 @@ export function useDynamicSky(testHour) {
     if (testHour === undefined) {
       const interval = setInterval(() => {
         setSunPosition(getSunPositionFromTime());
-      }, 60000);
+      }, 300000); // Increased from 60s to 5 minutes
       return () => clearInterval(interval);
     } else {
       setSunPosition(getSunPositionFromTime(testHour));
@@ -43,11 +46,18 @@ export function useDynamicSky(testHour) {
   else if (hour >= 15 && hour < 17) skySettings = skySettingsComp.afternoon;
   else if (hour >= 17 && hour < 18) skySettings = skySettingsComp.evening;
   else if (hour >= 18 && hour < 20) skySettings = skySettingsComp.sunset;
+  else if (hour >= 20 && hour < 22) skySettings = skySettingsComp.twilight;
   else skySettings = skySettingsComp.night;
 
-  // 🌙 Moon: opposite sun horizontally, fixed height above scene
-  const moonHeight = 10; // adjust for scene visibility
-  const moonPosition = [-sunPosition[0], moonHeight, -sunPosition[2]];
+  // 🌙 Moon: mirror sun horizontally, but keep it above horizon
+  const moonPosition = [
+    -sunPosition[0],
+    Math.max(5, -sunPosition[1]), // always above horizon
+    -sunPosition[2]
+  ];
+  console.log("moon_position")
+  console.log(moonPosition)
 
   return { sunPosition, moonPosition, skySettings };
 }
+

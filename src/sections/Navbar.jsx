@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { useTheme } from "../ThemeContext";
-import { Menu, X } from "lucide-react"; // ✅ Icons
+import { Menu, X, FileText } from "lucide-react"; // ✅ Icons
+import { trackResumeDownload } from "../utils/analytics";
+import { Link } from "react-router-dom";
 
 function Navigation() {
   const { isBright } = useTheme();
@@ -19,6 +21,16 @@ function Navigation() {
           </a>
         </li>
       ))}
+      <li className="nav-li">
+        <Link
+          className={`nav-link ${linkColor} hover:text-lavender flex items-center gap-2`}
+          to="/resume"
+          onClick={trackResumeDownload}
+        >
+          <FileText className="w-4 h-4" />
+          Resume
+        </Link>
+      </li>
     </ul>
   );
 }

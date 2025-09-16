@@ -29,7 +29,11 @@ export const Timeline = ({ data }) => {
       <h2 className={`text-heading ${mainTextColor}`}>My Work Experience</h2>
       <div ref={ref} className="relative pb-20">
         {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
+          <div key={index} className={`flex justify-start pt-10 md:pt-40 md:gap-10 ${
+            isBright 
+              ? 'bg-white/3 backdrop-blur-sm rounded-lg p-4 mb-4' 
+              : 'bg-black/25 backdrop-blur-sm rounded-lg p-4 mb-4'
+          }`}>
             <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full">
               <div className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[15px] bg-midnight">
                 <div className="w-4 h-4 p-2 border rounded-full border-neutral-700 bg-neutral-800" />

@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
-import BackgroundCanvas from "../components/BackgroundCanvas";
 
 // Import your project components
 import DeepMPCProject from "../projects/RLMPC";
@@ -16,7 +15,6 @@ export default function ProjectsPage() {
 
   return (
     <div className="relative bg-transparent text-white min-h-screen z-10 px-4">
-      <BackgroundCanvas />
       <Navbar />
 
       <div className="flex flex-col justify-center items-center">

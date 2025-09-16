@@ -54,10 +54,10 @@ export default function DraggableRobot({ scale = 0.15, ...props }) {
     { pointerEvents: true }
   )
 
-  // Flying state toggle (optional pause/fly behavior)
+  // Flying state toggle (optional pause/fly behavior) - reduced frequency
   const [isFlying, setIsFlying] = useState(true)
   useEffect(() => {
-    const interval = setInterval(() => setIsFlying((f) => !f), 8000)
+    const interval = setInterval(() => setIsFlying((f) => !f), 12000) // Increased from 8s to 12s
     return () => clearInterval(interval)
   }, [])
 
@@ -88,9 +88,9 @@ export default function DraggableRobot({ scale = 0.15, ...props }) {
       // Forward tilt angle in radians (negative to lean forward)
       const tiltForward = -0.4 // ~8.6 degrees
 
-      // Smoothly apply tilt on X and heading on Y
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, tiltForward, 0.1)
-      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, -angle + Math.PI / 2, 0.1)
+      // Smoothly apply tilt on X and heading on Y - reduced lerp for better performance
+      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, tiltForward, 0.05)
+      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, -angle + Math.PI / 2, 0.05)
 
     } else {
       flyingStartTimeRef.current = 0
@@ -98,8 +98,8 @@ export default function DraggableRobot({ scale = 0.15, ...props }) {
       const [offsetX, offsetY] = offset.get()
       const pos = meshRef.current.position
       meshRef.current.position.set(pos.x + offsetX, pos.y + offsetY, pos.z)
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, 0, 0.1)
-      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, 0, 0.1)
+      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, 0, 0.05)
+      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, 0, 0.05)
 
     }
   })

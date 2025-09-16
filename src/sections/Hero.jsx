@@ -95,6 +95,8 @@ import DraggableRobot from "../3DModels/DragableRobot";
 import { Scene } from "../3DModels/Scene";
 import { useDynamicSky } from "../components/useDynmaicSky";
 import Moon from "../components/Moon";
+import SkyBackground from "../components/SkyBackground";
+import { trackSectionView } from "../utils/analytics";
 
 function ResponsiveScale({ children }) {
   const { size } = useThree();
@@ -108,16 +110,37 @@ function ResponsiveScale({ children }) {
 }
 
 const Hero = ({id}) => {
-  const { sunPosition, moonPosition, skySettings } = useDynamicSky(7);
+  const { sunPosition, moonPosition, skySettings } = useDynamicSky();
 
   const hour = new Date().getHours();
   const isBright = hour >= 6 && hour < 20;
+
+  // Track section view
+  useEffect(() => {
+    trackSectionView('Hero');
+  }, []);
 
   return (
     <section id = {id} className="flex items-start h-[65rem] md:h-[100vh] justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space">
       <HeroText isBright={isBright} />
       <figure className="top-[6rem] sm:top-[9rem] md:top-0 md:w-[50vw] absolute right-0 h-screen w-[100vw] 2xl:right-[10rem] xl:right-[6rem]">
-        <Canvas shadows camera={{ position: [0, 2, 5], fov: 68 }}>
+        <Canvas 
+          shadows 
+          camera={{ position: [0, 2, 5], fov: 68 }}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: -1,
+          }}
+          performance={{ min: 0.5 }} // Enable performance monitoring
+          dpr={[1, 2]} // Limit device pixel ratio
+        >
+          {/* Sky Background */}
+          <SkyBackground />
+          
           {/* Base ambient light (lower at night for contrast) */}
           <ambientLight intensity={isBright ? 0.8 : 0.3} />
 
@@ -141,26 +164,26 @@ const Hero = ({id}) => {
 
           {/* 🌙 Moonlight (nighttime only, opposite the sun) */}
           {!isBright && (
-  <>
-    {/* 🌙 Moon directional light */}
-    <directionalLight
-      position={moonPosition}
-      intensity={1.5}
-      color={"#cfdcff"}
-      castShadow
-      shadow-mapSize-width={2048}
-      shadow-mapSize-height={2048}
-    />
+                          <>
+                            {/* 🌙 Moon directional light */}
+                            <directionalLight
+                              position={moonPosition}
+                              intensity={1.5}
+                              color={"#cfdcff"}
+                              castShadow
+                              shadow-mapSize-width={2048}
+                              shadow-mapSize-height={2048}
+                            />
 
-    {/* Soft night fill */}
-    <hemisphereLight
-      skyColor={"#8899aa"}
-      groundColor={"#222233"}
-      intensity={0.8}
-      position={[0, 5, 0]}
-    />
-     <Moon position={moonPosition} />
-  </>
+                            {/* Soft night fill */}
+                            {/* <hemisphereLight
+                              skyColor={"#8899aa"}
+                              groundColor={"#222233"}
+                              intensity={0.8}
+                              position={[0, 5, 0]}
+                            /> */}
+                            <Moon position={moonPosition} />
+                          </>
 )}
 
           <Suspense fallback={<Loader />}>

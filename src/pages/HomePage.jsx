@@ -8,14 +8,12 @@ import Experiences from "../sections/Experiences";
 
 import Contact from "../sections/Contact";
 import Footer from '../sections/Footer';
-import BackgroundCanvas from "../components/BackgroundCanvas";
 import { useState, useEffect } from "react";
 
 const HomePage = () => {
 
   return (
     <div className="bg-transparent container mx-auto max-w-7xl">
-      <BackgroundCanvas />
       <Navbar />
       <Hero id = "home"/>
       <About id = "about" />

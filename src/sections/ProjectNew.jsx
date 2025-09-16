@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { useTheme } from "../ThemeContext"; 
 import Projects from "./Projects";
 import SVGMap from "../components/SVGMap";
 import SkillIcons from "../components/SVGMap";
 import ViewProjectButton from "../components/ViewProjectButton";
 import { View } from "@react-three/drei";
+import { trackProjectView, trackSectionView } from "../utils/analytics";
 
 export default function ProjectsSection({id}) {
   const { isBright, mainTextColor, secondaryTextColor } = useTheme()
   const projects = Projects
+
+  // Track section view
+  useEffect(() => {
+    trackSectionView('Projects');
+  }, []);
+
   return (
     <section id = {id} className="w-full bg-trasparent py-20 px-6">
       <h2 className={`text-4xl md:text-5xl font-bold text-center ${mainTextColor}  mb-16`}>
@@ -23,7 +31,11 @@ export default function ProjectsSection({id}) {
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: i * 0.2 }}
     viewport={{ once: true }}
-    className="flex flex-col h-full bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition group"
+    className={`flex flex-col h-full backdrop-blur-lg border rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition group ${
+      isBright 
+        ? 'bg-white/15 border-white/30' 
+        : 'bg-black/30 border-white/10'
+    }`}
   >
     <div className="overflow-hidden">
       <img
@@ -60,7 +72,12 @@ export default function ProjectsSection({id}) {
         href={project.link}
         className="mt-auto mx-auto inline-block px-4 py-2 "
       >
-        <ViewProjectButton  href={project.link} name="View on Github" isGithub/>
+        <ViewProjectButton  
+          href={project.link} 
+          name="View on Github" 
+          isGithub
+          onClick={() => trackProjectView(project.title)}
+        />
       </div>
     </div>
   </motion.div>

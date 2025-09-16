@@ -1,3 +1,5 @@
+import { useTheme } from "../ThemeContext";
+
 const Project = ({
   title,
   intro,
@@ -7,6 +9,7 @@ const Project = ({
   architecture,
   demoLink,
 }) => {
+  const { isBright, mainTextColor, secondaryTextColor } = useTheme();
   const getEmbedUrl = (url) => {
     if (!url) return null;
 
@@ -34,10 +37,14 @@ const Project = ({
 
 
   return (
-    <div className="w-full px-4 py-8 max-w-7xl mx-auto space-y-12">
+    <div className={`w-full px-4 py-8 max-w-7xl mx-auto space-y-12 ${
+      isBright 
+        ? 'bg-white/5 backdrop-blur-sm rounded-2xl p-8' 
+        : 'bg-black/15 backdrop-blur-sm rounded-2xl p-8'
+    }`}>
       {/* Title & Intro */}
-      <h1 className="text-4xl font-bold text-center">{title}</h1>
-      <p className="text-lg text-gray-300 text-center max-w-3xl mx-auto">{intro}</p>
+      <h1 className={`text-4xl font-bold text-center ${mainTextColor}`}>{title}</h1>
+      <p className={`text-lg text-center max-w-3xl mx-auto ${secondaryTextColor}`}>{intro}</p>
 
       {/* YouTube Video Section */}
       <div className="w-full flex flex-col md:flex-row gap-6 justify-center">
@@ -77,20 +84,20 @@ const Project = ({
 
       {/* Results */}
       <section>
-        <h2 className="text-2xl font-semibold mb-2">Results</h2>
-        <p>{results}</p>
+        <h2 className={`text-2xl font-semibold mb-2 ${mainTextColor}`}>Results</h2>
+        <p className={secondaryTextColor}>{results}</p>
       </section>
 
       {/* Architecture */}
       <section>
-        <h2 className="text-2xl font-semibold mb-2">Architecture</h2>
-        <p>{architecture}</p>
+        <h2 className={`text-2xl font-semibold mb-2 ${mainTextColor}`}>Architecture</h2>
+        <p className={secondaryTextColor}>{architecture}</p>
       </section>
 
       {/* Demo (optional) */}
       {demoLink && (
         <section>
-          <h2 className="text-2xl font-semibold mb-2">Live Demo</h2>
+          <h2 className={`text-2xl font-semibold mb-2 ${mainTextColor}`}>Live Demo</h2>
           <iframe
             src={demoLink}
             className="w-full h-[500px] rounded-lg border"
