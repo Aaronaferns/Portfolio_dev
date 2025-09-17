@@ -1,33 +1,44 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { useTheme } from "../ThemeContext";
-import { Menu, X, FileText } from "lucide-react"; // ✅ Icons
+import { Menu, X, FileText } from "lucide-react";
 import { trackResumeDownload } from "../utils/analytics";
 import { Link } from "react-router-dom";
+import { useInView } from 'react-intersection-observer';
 
-function Navigation() {
+function Navigation({ isMobile, onLinkClick }) {
   const { isBright } = useTheme();
   const linkColor = isBright ? "text-gray-900" : "text-white";
 
+  const baseClasses = `nav-link ${linkColor} transition-all hover:text-lavender hover:drop-shadow-[0_0_8px_#c4b5fd]`;
+
   return (
-    <ul className="nav-ul flex flex-col sm:flex-row gap-4 sm:gap-6">
+    <ul
+      className={`flex gap-6 ${
+        isMobile ? "flex-col items-center" : "flex-row items-center"
+      }`}
+    >
       {["home", "about", "projects", "contact"].map((section) => (
-        <li key={section} className="nav-li">
+        <li key={section}>
           <a
-            className={`nav-link ${linkColor} hover:text-lavender`}
             href={`#${section}`}
+            className={baseClasses}
+            onClick={isMobile ? onLinkClick : undefined}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
           </a>
         </li>
       ))}
-      <li className="nav-li">
+      <li>
         <Link
-          className={`nav-link ${linkColor} hover:text-lavender flex items-center gap-2`}
           to="/resume"
-          onClick={trackResumeDownload}
+          onClick={(e) => {
+            trackResumeDownload(e);
+            if (isMobile) onLinkClick();
+          }}
+          className={`${baseClasses} flex items-center gap-2`}
         >
-          <FileText className="w-4 h-4" />
+          <FileText className="hidden sm:inline w-4 h-4" />
           Resume
         </Link>
       </li>
@@ -44,7 +55,8 @@ const Navbar = () => {
   return (
     <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">
-        <div className="flex items-center justify-between py-2 sm:py-0">
+        <div className="flex items-center justify-between py-3">
+          {/* Brand */}
           <a
             href="#home"
             className={`text-xl font-bold transition-colors ${textColor} hover:text-lavender`}
@@ -55,7 +67,7 @@ const Navbar = () => {
           {/* Burger / Close Icon */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`flex cursor-pointer focus:outline-none sm:hidden ${textColor}`}
+            className={`sm:hidden ${textColor}`}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -70,14 +82,12 @@ const Navbar = () => {
       {/* Mobile Nav */}
       {isOpen && (
         <motion.div
-          className="block overflow-hidden text-center sm:hidden"
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
+          className="sm:hidden flex justify-center pb-5"
         >
-          <nav className="pb-5">
-            <Navigation />
-          </nav>
+          <Navigation isMobile onLinkClick={() => setIsOpen(false)} />
         </motion.div>
       )}
     </div>

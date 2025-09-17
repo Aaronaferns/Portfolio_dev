@@ -110,10 +110,17 @@ function ResponsiveScale({ children }) {
 }
 
 const Hero = ({id}) => {
-  const { sunPosition, moonPosition, skySettings } = useDynamicSky();
+  // const testHour =20;
+  const { sunPosition, moonPosition, skySettings, isBright } = useDynamicSky();
+
+  // No longer need local isBright calculation - it's now from the hook
+  const isNight = !isBright; // Moon visible when not bright
+
+  // console.log("Hero test hour:", testHour, "isBright:", isBright, "isNight:", isNight);
 
   const hour = new Date().getHours();
-  const isBright = hour >= 6 && hour < 20;
+  console.log("Hero component hour:", hour);
+ 
 
   // Track section view
   useEffect(() => {
@@ -143,48 +150,32 @@ const Hero = ({id}) => {
           
           {/* Base ambient light (lower at night for contrast) */}
           <ambientLight intensity={isBright ? 0.8 : 0.3} />
-
-          {/* ☀️ Sunlight (daytime only) */}
-          {isBright && (
-            <directionalLight
-              position={sunPosition}
-              intensity={1.0}
-             
-              castShadow
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-              shadow-camera-near={1}
-              shadow-camera-far={20}
-              shadow-camera-left={-10}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-bottom={-10}
-            />
-          )}
-
-          {/* 🌙 Moonlight (nighttime only, opposite the sun) */}
-          {!isBright && (
-                          <>
-                            {/* 🌙 Moon directional light */}
-                            <directionalLight
-                              position={moonPosition}
-                              intensity={1.5}
-                              color={"#cfdcff"}
-                              castShadow
-                              shadow-mapSize-width={2048}
-                              shadow-mapSize-height={2048}
-                            />
-
-                            {/* Soft night fill */}
-                            {/* <hemisphereLight
-                              skyColor={"#8899aa"}
-                              groundColor={"#222233"}
-                              intensity={0.8}
-                              position={[0, 5, 0]}
-                            /> */}
-                            <Moon position={moonPosition} />
-                          </>
+{/* ☀️ Sunlight (daytime only) */}
+{isBright && (
+  <directionalLight
+    position={sunPosition}
+    intensity={1.0}
+    castShadow
+    shadow-mapSize-width={1024}
+    shadow-mapSize-height={1024}
+  />
 )}
+
+{/* 🌙 Moonlight (nighttime only) */}
+{!isBright && (
+  <>
+    <directionalLight
+      position={moonPosition}
+      intensity={0.6}
+      color={"#cfdcff"}
+      castShadow
+      shadow-mapSize-width={1024}
+      shadow-mapSize-height={1024}
+    />
+    <Moon position={moonPosition} />
+  </>
+)}
+
 
           <Suspense fallback={<Loader />}>
             <ResponsiveScale>

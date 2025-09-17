@@ -31,8 +31,8 @@ export const Timeline = ({ data }) => {
         {data.map((item, index) => (
           <div key={index} className={`flex justify-start pt-10 md:pt-40 md:gap-10 ${
             isBright 
-              ? 'bg-white/3 backdrop-blur-sm rounded-lg p-4 mb-4' 
-              : 'bg-black/25 backdrop-blur-sm rounded-lg p-4 mb-4'
+              ? 'bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4' 
+              : 'bg-black/40 backdrop-blur-sm rounded-lg p-4 mb-4'
           }`}>
             <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full">
               <div className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[15px] bg-midnight">

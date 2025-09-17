@@ -80,3 +80,4 @@ export const trackSectionView = (sectionName) => {
     event_label: sectionName,
   });
 };
+

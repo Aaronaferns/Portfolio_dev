@@ -33,8 +33,8 @@ export default function ProjectsSection({id}) {
     viewport={{ once: true }}
     className={`flex flex-col h-full backdrop-blur-lg border rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition group ${
       isBright 
-        ? 'bg-white/15 border-white/30' 
-        : 'bg-black/30 border-white/10'
+        ? 'bg-white/80 border-white/30' 
+        : 'bg-black/40 border-white/10'
     }`}
   >
     <div className="overflow-hidden">
@@ -52,18 +52,37 @@ export default function ProjectsSection({id}) {
         {project.description}
       </p>
 
-      {/* Tech Stack Icons */}
-      {project.tech && (
-        <div className="flex flex-wrap gap-2 my-2 mb-8">
-          <p className="text-green-500">Tech Stack: </p>
+            {/* Tech Stack Icons */}
+            {project.tech && (
+        <div className="flex flex-wrap gap-2 my-2 mb-4">
+          <p className="text-green-500 text-sm font-medium">Tech Stack: </p>
           {project.tech.map((techItem, idx) => (
             <img
               key={idx}
               src={SkillIcons[techItem]} // URL or local import
               alt={techItem}
               className="h-6 w-6"
-              title={techItem.name} // hover tooltip
+              title={techItem} // hover tooltip
             />
+          ))}
+        </div>
+      )}
+
+      {/* Keywords */}
+      {project.keywords && project.keywords.length > 0 && (
+        <div className="flex flex-wrap gap-2 my-2 mb-8">
+          <p className="text-blue-400 text-sm font-medium">Keywords: </p>
+          {project.keywords.map((keyword, idx) => (
+            <span
+              key={idx}
+              className={`px-2 py-1 text-xs rounded-full border ${
+                isBright
+                  ? 'bg-gray-100 text-gray-700 border-gray-300'
+                  : 'bg-gray-800 text-gray-300 border-gray-600'
+              }`}
+            >
+              {keyword}
+            </span>
           ))}
         </div>
       )}

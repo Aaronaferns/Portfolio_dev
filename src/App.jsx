@@ -7,7 +7,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import ResumePage from "./pages/ResumePage";
 import PageTracker from "./components/PageTracker";
 import { initGA } from "./utils/analytics";
-
+import { Analytics } from "@vercel/analytics/react";
 function App() {
   // Initialize Google Analytics on app load
   useEffect(() => {
@@ -16,14 +16,15 @@ function App() {
 
   return (
     <ThemeProvider>
-    <Router>
-      <PageTracker />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/resume" element={<ResumePage />} />
-      </Routes>
-    </Router>
+      <Router>
+        <PageTracker />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/resume" element={<ResumePage />} />
+        </Routes>
+        <Analytics />
+      </Router>
     </ThemeProvider>
   );
 }

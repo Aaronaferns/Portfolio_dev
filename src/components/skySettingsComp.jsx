@@ -1,58 +1,62 @@
 const skySettingsComp = {
   earlyMorning: {
-    rayleigh: 3.5,        // soft, dreamy blue
-    turbidity: 12,        // misty, magical atmosphere
-    mieCoefficient: 0.025, // gentle, glowing sun
-    mieDirectionalG: 0.6   // soft, diffused light
+    rayleigh: 0.05,        // very dark, minimal scattering
+    turbidity: 3,         // heavy mist and atmospheric haze
+    mieCoefficient: 0.0015, // subtle atmospheric scattering
+    mieDirectionalG: 0.95   // focused light scattering for misty effect
   },
   
   morning: {
-    rayleigh: 2.8,        // enchanted blue sky
-    turbidity: 8,         // light magical mist
-    mieCoefficient: 0.018, // warm, inviting glow
-    mieDirectionalG: 0.65  // gentle sun rays
+    rayleigh: 0.07,         // crisp blue, slightly stronger than midday
+    turbidity: 0.2,          // very light mist for freshness
+    mieCoefficient: 0.000009040, // gentle haze without washing out
+    mieDirectionalG: 5   // warmer forward scattering for a golden tint
   },
   
+  
+  
   noon: {
-    rayleigh: 2.0,        // bright, cheerful blue
-    turbidity: 4,         // crystal clear fairy tale day
-    mieCoefficient: 0.012, // radiant sun
-    mieDirectionalG: 0.8   // brilliant sunlight
+    rayleigh:0.001,          // lower blue scattering
+    turbidity: 11,            // some haze for soft glow
+    mieCoefficient: 0.05,   // subtle atmospheric scattering
+    mieDirectionalG: 0.1   // brilliant light
   },
   
   afternoon: {
-    rayleigh: 2.5,        // warm, pleasant blue
-    turbidity: 6,         // slight dreamy haze
-    mieCoefficient: 0.02,  // golden afternoon glow
-    mieDirectionalG: 0.7   // soft warmth
+    rayleigh: 7.0,        // warm blue
+    turbidity: 5,         // slight haze
+    mieCoefficient: 0.07, // golden glow
+    mieDirectionalG: 0.82  // warm light
   },
   
   evening: {
-    rayleigh: 1.8,        // romantic golden hour
-    turbidity: 15,        // magical golden mist
-    mieCoefficient: 0.035, // enchanted sun glow
-    mieDirectionalG: 0.55  // dreamy, large sun
+    rayleigh: 0.2,          // lower blue scattering
+    turbidity: 6,            // some haze for soft glow
+    mieCoefficient: 0.005,   // subtle atmospheric scattering
+    mieDirectionalG: 0.85    // stronger forward scattering for warm sunlight
   },
   
+  
   sunset: {
-    rayleigh: 1.2,        // rich oranges and pinks
-    turbidity: 20,        // deep fairy tale atmosphere
-    mieCoefficient: 0.045, // magical sunset glow
-    mieDirectionalG: 0.45  // large, soft fairy tale sun
+    rayleigh: 0.05,        // rich colors
+    turbidity: 2,        // deep atmosphere
+    mieCoefficient: 0.01, // sunset glow
+    mieDirectionalG: 1   // soft colors
   },
   
   twilight: {
-    rayleigh: 0.8,        // mystical purple hour
-    turbidity: 12,        // ethereal mist
-    mieCoefficient: 0.015, // gentle twilight glow
-    mieDirectionalG: 0.75  // mysterious light
+    rayleigh: 0.4,        // rich colors
+    turbidity: 20,        // deep atmosphere
+    mieCoefficient: 0.4, // sunset glow
+    mieDirectionalG: 1   // soft colors
   },
   
   night: {
-    rayleigh: 0.02,        // very dark blues, almost black
-    turbidity: 2,         // clear, minimal atmosphere
-    mieCoefficient: 0.001, // minimal scattering
-    mieDirectionalG: 0.9   // sharp, minimal moonlight
-  }
+    rayleigh: 2,          // lower blue scattering
+    turbidity: 5,            // some haze for soft glow
+    mieCoefficient: 0.005,   // subtle atmospheric scattering
+    mieDirectionalG: 0.85   // brilliant light
+  },
+  
 };
 export default skySettingsComp;
