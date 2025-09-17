@@ -71,7 +71,7 @@ const About = ({id}) => {
   <div className="z-10 w-[50%]">
     <p className="headtext">Where I’m Based</p>
     <p className="subtext">
-      Currently located in the United States, but working remotely across the globe.
+      Based in the United States.
     </p>
   </div>
   <figure className="absolute left-[30%] top-[10%]">
