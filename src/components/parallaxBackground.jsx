@@ -10,7 +10,7 @@ const ParallaxBackground = () => {
 
   return (
     <section className="absolute inset-0 bg-black/40">
-      <div className="relative h-screen overflow-y-hidden">
+      <div className="relative h-screen">
         {/* Background Sky */}
         <div
           className="absolute inset-0 w-full h-screen -z-50"

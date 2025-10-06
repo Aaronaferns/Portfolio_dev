@@ -18,7 +18,7 @@ const About = ({id}) => {
   // [#2E3944]
   // [#212A31] 
   return (
-    <section id={id} className="c-space section-spacing py-0 sm:py-[10rem] md:py-0" >
+    <section id={id} className="c-space section-spacing py-0 sm:py-[10rem] md:py-0" id="about">
       <h2 className={`text-heading ${mainTextColor} `}>About Me</h2>
      <div className="grid grid-cols-1 auto-rows-auto gap-6 md:grid-cols-6 md:auto-rows-auto items-start mt-12">
 
@@ -67,11 +67,11 @@ const About = ({id}) => {
 
 
 {/* Grid 3 */}
-<div className="p-6 bg-gradient-to-b bg-[#212A31] rounded-2xl grid-3 min-h-[10rem]">
+<div className="p-6 bg-gradient-to-b bg-[#212A31] rounded-2xl grid-3">
   <div className="z-10 w-[50%]">
     <p className="headtext">Where I’m Based</p>
     <p className="subtext">
-      In the United States.
+      Based in the United States.
     </p>
   </div>
   <figure className="absolute left-[30%] top-[10%]">
@@ -90,7 +90,7 @@ const About = ({id}) => {
 </div>
 
 {/* Grid 5 */}
-<div className="p-4 pl-6 bg-gradient-to-b bg-[#2E3944] min-h-[22rem] rounded-2xl grid-5">
+<div className="p-4 pl-6 bg-gradient-to-b bg-[#2E3944] rounded-2xl grid-5">
   <div className="z-10 w-[50%]">
     <p className="headtext">Research Interests</p>
     <p className="subtext">

@@ -212,7 +212,7 @@ export function useDynamicSky(testHour) {
     if (testHour === undefined) {
       const interval = setInterval(() => {
         setSunPosition(getSunPositionFromTime());
-      }, 300000); // update every 5 min
+      }, 1800000); // 30 minutes instead of 5
       return () => clearInterval(interval);
     } else {
       setSunPosition(getSunPositionFromTime(testHour));
