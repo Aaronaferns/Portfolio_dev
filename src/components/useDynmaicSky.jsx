@@ -173,8 +173,10 @@ import skySettingsComp from "./skySettingsComp";
 //   return [x, y, z];
 // }
 export function getSunPositionFromTime(simulatedHour) {
-  const now = new Date();
-  const hour = simulatedHour ?? now.getHours() + now.getMinutes() / 60;
+  // const now = new Date();
+  // const hour = simulatedHour ?? now.getHours() + now.getMinutes() / 60;
+  const hour = 5.1;
+  // console.log("getSunPositionFromTime hour:", hour);
 
   const radius = 100; // distance from the scene origin
   const sunrise = 6;  // 6 AM
@@ -217,7 +219,8 @@ export function useDynamicSky(testHour) {
     }
   }, [testHour]);
 
-  const hour = testHour ?? new Date().getHours();
+  // const hour = testHour ?? new Date().getHours();
+  const hour = 2;
 
   // 🌍 Apply sky settings based on time
   let skySettings;

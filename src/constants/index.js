@@ -266,11 +266,16 @@ export const experiences = [
     job: "Indiana University Bloomington, IN",
     date: "2024 May - Present",
     contents: [
-      "Designed spatiotemporal analysis pipelines for OCT video data to enable virtual histology, integrating Fourier-domain feature extraction with deep learning models",
-      "Developed U-Net-based segmentation networks enhanced with a CycleGAN framework for domain adaptation, improving cross-domain segmentation accuracy on medical OCT datasets",
-      "Applying deep learning models for tissue boundary detection and anomaly segmentation in OCT sequences.", 
-      "Developed synthetic dataset generation pipelines for metasurface analysis using Lumerical FDTD, improving dataset production efficiency by 80% with parallel processing on BigRed200 (Slurm-based HPC).",
-      "Engineered U-Net-based surrogate models, reducing computational time by 70% while maintaining 95% accuracy, and designed an inverse metasurface model achieving up to 15% accuracy gains over prior work.",
+        "Biomedical Video Segmentation Project",
+       " • Designed deep learning CNN-GRU and Transformers based architectures in Pytorch for Optical Coherence Tomography (OCT) unsupervised video segmentation and spatio-temporal analysis to enable virtual histology (tissue analysis)",
+      " • Combined Fourier analysis, and deep learning, providing 50% better details than previous works.",
+      " • Solved tissue drift and warping during imaging by classical affine registration methods (Dipy) and voxel morph inspired U-Net based architectures for regularized diffeomorphic registration decreasing MSE by 10%.",
+      "Metasurfaces: High-Q Biomedical sensing Project",
+      "  • Built High Performance Computing (Slurm, MPI) accelerated Lumerical FDTD simualtion pipelines for Meta-Surface design and synthetic data generation improving generation speeds by 80%.",
+
+      "  • Engineered U-Net based FDTD solver surrogate models for forward and inverse metasurface design in tensorflow, reducing simulation runtime by 70% while maintaining 95% accuracy, achieving up to 15% gains over prior benchmarks.",
+
     ],
   },
 ];
+""

@@ -15,14 +15,12 @@ const HomePage = () => {
   return (
     <div className="bg-transparent container mx-auto max-w-7xl">
       <Navbar />
-      <Hero id = "home"/>
-      <About id = "about" />
-     <ProjectNew id="projects"/>
-      {/* <Projects /> */}
-      <Experiences id="experience" />
-      {/* <Testimonial /> */}
-      <Contact id="contact"/>
-      <Footer/>
+      <Hero id="home" />
+      <About id="about" className="py-20" />
+      <ProjectNew id="projects" className="py-20" />
+      <Experiences id="experience" className="py-20" />
+      <Contact id="contact" className="py-20" />
+      <Footer />
     </div>
   );
 };

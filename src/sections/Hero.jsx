@@ -128,7 +128,7 @@ const Hero = ({id}) => {
   }, []);
 
   return (
-    <section id = {id} className="flex items-start h-[65rem] md:h-[100vh] justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space">
+    <section id={id} className="flex items-start h-screen md:h-screen justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space">
       <HeroText isBright={isBright} />
       <figure className="top-[6rem] sm:top-[9rem] md:top-0 md:w-[50vw] absolute right-0 h-screen w-[100vw] 2xl:right-[10rem] xl:right-[6rem]">
         <Canvas 

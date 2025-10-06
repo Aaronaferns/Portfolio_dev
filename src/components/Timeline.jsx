@@ -29,17 +29,18 @@ export const Timeline = ({ data }) => {
       <h2 className={`text-heading ${mainTextColor}`}>My Work Experience</h2>
       <div ref={ref} className="relative pb-20">
         {data.map((item, index) => (
-          <div key={index} className={`flex justify-start pt-10 md:pt-40 md:gap-10 ${
+          <div key={index} className={`flex justify-start min-h-[50vh] ml-12 md:ml-20 p-10 mt-10 md:mt-20 md:gap-10 ${
             isBright 
               ? 'bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4' 
               : 'bg-black/40 backdrop-blur-sm rounded-lg p-4 mb-4'
           }`}>
             <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full">
-              <div className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[15px] bg-midnight">
+              
+              <div className="absolute flex items-center justify-center w-10 h-10 rounded-full -left-[6rem] bg-midnight">
                 <div className="w-4 h-4 p-2 border rounded-full border-neutral-700 bg-neutral-800" />
               </div>
               <div
-                className={`flex-col hidden gap-2 text-xl font-bold md:flex md:pl-20 md:text-3xl ${secondaryTextColor}`}
+                className={`flex-col hidden gap-2 text-xl font-bold md:flex  md:text-3xl ${secondaryTextColor}`}
               >
                 <h3>{item.date}</h3>
                 <h3 className={`text-4xl ${mainTextColor}`}>{item.title}</h3>
@@ -47,8 +48,8 @@ export const Timeline = ({ data }) => {
               </div>
             </div>
 
-            <div className="relative w-full pl-20 pr-4 md:pl-4">
-              <div className={`block mb-4 text-2xl font-bold text-left md:hidden ${secondaryTextColor}`}>
+            <div className="relative w-full  pr-4 md:pl-4  items-center justify-center">
+              <div className={`block mb-4 text-2xl font-bold text-left md:hidden ${secondaryTextColor} `}>
                 <h3>{item.date}</h3>
                 <h3 className={`text-4xl ${mainTextColor}`}>{item.title}</h3>
                 <h3>{item.job}</h3>

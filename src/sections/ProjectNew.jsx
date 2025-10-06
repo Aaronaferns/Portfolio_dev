@@ -18,8 +18,8 @@ export default function ProjectsSection({id}) {
   }, []);
 
   return (
-    <section id = {id} className="w-full bg-trasparent py-20 px-6">
-      <h2 className={`text-4xl md:text-5xl font-bold text-center ${mainTextColor}  mb-16`}>
+    <section id = {id} className="c-space section-spacing py-0 sm:py-[10rem] md:py-0">
+      <h2 className={`text-heading ${mainTextColor}  mb-16`}>
         My Projects
       </h2>
 
