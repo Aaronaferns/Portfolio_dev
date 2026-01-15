@@ -1,71 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ResumePage = () => {
-  const [selectedResume, setSelectedResume] = useState(null); // start with no selection
-
-  const resumeFiles = {
-    software: {
-      file: "/ResumeAaronFernandesSWE.pdf",
-      label: "Software Engineering",
-    },
-    ml: {
-      file: "/ResumeAaronFernandesMLE.pdf",
-      label: "Machine Learning",
-    },
-  };
+  const resumeFile = "/ResumeAaronFernandesMLE.pdf";
+  const resumeLabel = "Machine Learning";
 
   return (
-    <div className="w-full h-screen flex flex-col bg-[#212A31]">
-      {/* Toggle + Download Buttons */}
-      <div className="flex justify-center items-center gap-4 p-6 bg-gradient-to-r from-[#2E3944] to-[#212A31] shadow-lg">
-        {/* Resume Toggle Buttons */}
+    <div className="fixed inset-0" style={{ backgroundColor: '#D3D9D4' }}>
+      {/* Header */}
+      <div className="absolute top-6 left-6 z-20">
         <button
-          className={`px-6 py-2 rounded-xl font-semibold transition-transform duration-200 ${
-            selectedResume === "software"
-              ? "bg-gradient-to-r from-[#748D92] to-[#D3D9D4] text-[#212A31] shadow-lg"
-              : "bg-[#2E3944] text-[#D3D9D4] hover:bg-[#748D92]"
-          }`}
-          onClick={() => setSelectedResume("software")}
+          onClick={() => window.history.back()}
+          className="px-6 py-3 text-sm font-semibold rounded-lg bg-[#212A31] text-[#D3D9D4] hover:bg-[#2E3944] transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
         >
-          Software Engineering
+          ← Back
         </button>
-
-        <button
-          className={`px-6 py-2 rounded-xl font-semibold transition-transform duration-200 ${
-            selectedResume === "ml"
-              ? "bg-gradient-to-r from-[#748D92] to-[#D3D9D4] text-[#212A31] shadow-lg"
-              : "bg-[#2E3944] text-[#D3D9D4] hover:bg-[#748D92]"
-          }`}
-          onClick={() => setSelectedResume("ml")}
-        >
-          Machine Learning
-        </button>
-
-        {/* Download Button */}
-        {selectedResume && (
-          <a
-            href={resumeFiles[selectedResume].file}
-            download
-            className="px-6 py-2 rounded-xl bg-gradient-to-r from-[#D3D9D4] to-[#748D92] text-[#212A31] font-semibold shadow-lg hover:scale-105 transition-transform duration-200"
-          >
-            Download {resumeFiles[selectedResume].label} PDF
-          </a>
-        )}
       </div>
 
       {/* Resume Viewer */}
-      <div className="flex-1 p-6">
-        {selectedResume ? (
-          <iframe
-            src={resumeFiles[selectedResume].file}
-            title="Resume Viewer"
-            className="w-full h-full border-none rounded-xl shadow-2xl"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-[#D3D9D4] text-xl">
-            Select a resume to view
-          </div>
-        )}
+      <div className="pt-20 h-full">
+        <iframe
+          src={resumeFile}
+          title="Resume Viewer"
+          className="w-full h-full border-none"
+        />
       </div>
     </div>
   );

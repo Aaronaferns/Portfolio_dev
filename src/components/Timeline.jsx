@@ -29,10 +29,14 @@ export const Timeline = ({ data }) => {
       <h2 className={`text-heading ${mainTextColor}`}>My Work Experience</h2>
       <div ref={ref} className="relative pb-20">
         {data.map((item, index) => (
-          <div key={index} className={`flex justify-start min-h-[50vh] ml-12 md:ml-20 p-10 mt-10 md:mt-20 md:gap-10 ${
-            isBright 
-              ? 'bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4' 
-              : 'bg-black/40 backdrop-blur-sm rounded-lg p-4 mb-4'
+          <div key={index} className={`flex justify-start min-h-[50vh] ml-12 md:ml-20 p-10 mt-10 md:mt-20 md:gap-10 rounded-lg p-4 mb-4 ${
+            index % 4 === 0
+              ? 'grid-default-color'
+              : index % 4 === 1
+              ? 'grid-special-color'
+              : index % 4 === 2
+              ? 'grid-black-color'
+              : 'grid-teal-color'
           }`}>
             <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-40 lg:max-w-sm md:w-full">
               
@@ -40,25 +44,41 @@ export const Timeline = ({ data }) => {
                 <div className="w-4 h-4 p-2 border rounded-full border-neutral-700 bg-neutral-800" />
               </div>
               <div
-                className={`flex-col hidden gap-2 text-xl font-bold md:flex  md:text-3xl ${secondaryTextColor}`}
+                className={`flex-col hidden gap-2 text-xl font-bold md:flex  md:text-3xl text-inherit`}
               >
                 <h3>{item.date}</h3>
-                <h3 className={`text-4xl ${mainTextColor}`}>{item.title}</h3>
+                <h3 className={`text-4xl text-inherit`}>{item.title}</h3>
                 <h3 className="text-3xl">{item.job}</h3>
               </div>
             </div>
 
-            <div className="relative w-full  pr-4 md:pl-4  items-center justify-center">
-              <div className={`block mb-4 text-2xl font-bold text-left md:hidden ${secondaryTextColor} `}>
+            <div className="relative w-full pr-4 md:pl-4 flex flex-col items-center justify-center">
+              <div className={`block mb-6 text-2xl font-bold text-center md:hidden text-inherit `}>
                 <h3>{item.date}</h3>
-                <h3 className={`text-4xl ${mainTextColor}`}>{item.title}</h3>
+                <h3 className={`text-4xl text-inherit`}>{item.title}</h3>
                 <h3>{item.job}</h3>
               </div>
-              {item.contents.map((content, idx) => (
-                <p key={idx} className={`mb-3 font-normal ${secondaryTextColor}`}>
-                  {content}
-                </p>
-              ))}
+              <div className="max-w-2xl text-center">
+                {item.contents.map((content, idx) => (
+                  <motion.p
+                    key={idx}
+                    className={`mb-4 text-lg leading-relaxed p-4 rounded-xl cursor-pointer transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:text-2xl font-semibold text-inherit bg-opacity-10 hover:bg-opacity-20`}
+                    whileHover={{
+                      y: -12,
+                      rotateX: 8,
+                      scale: 1.2
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 700,
+                      damping: 25,
+                      mass: 0.6
+                    }}
+                  >
+                    {content}
+                  </motion.p>
+                ))}
+              </div>
             </div>
           </div>
         ))}

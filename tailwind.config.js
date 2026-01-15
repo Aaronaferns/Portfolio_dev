@@ -9,6 +9,7 @@ export default {
         'custom-blue':'#124E66',
         'custom-light-blue':'#748D92',
         'custom-beige':'#D3D9D4',
+        'lavender': '#c4b5fd',
       }
     },
   },

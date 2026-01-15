@@ -8,15 +8,15 @@ import { Link } from "react-router-dom";
 function Navigation({ isMobile, onLinkClick }) {
   const { isBright } = useTheme();
   const linkColor = isBright ? "text-gray-900" : "text-white";
-  const baseClasses = `nav-link ${linkColor} transition-all hover:text-lavender hover:drop-shadow-[0_0_8px_#c4b5fd]`;
+  const baseClasses = `nav-link ${linkColor} transition-all duration-300 hover:text-lavender hover:drop-shadow-[0_0_12px_#c4b5fd] hover:scale-105 relative group`;
 
   return (
     <ul
-      className={`flex gap-6 ${
+      className={`flex gap-8 ${
         isMobile ? "flex-col items-center" : "flex-row items-center"
       }`}
     >
-      {["home", "about", "projects", "contact"].map((section) => (
+      {["about", "projects", "contact"].map((section) => (
         <li key={section}>
           <a
             href={`#${section}`}
@@ -24,6 +24,7 @@ function Navigation({ isMobile, onLinkClick }) {
             onClick={isMobile ? onLinkClick : undefined}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-lavender to-purple-400 group-hover:w-full transition-all duration-500 ease-out"></span>
           </a>
         </li>
       ))}
@@ -36,8 +37,9 @@ function Navigation({ isMobile, onLinkClick }) {
           }}
           className={`${baseClasses} flex items-center gap-2`}
         >
-          <FileText className="hidden sm:inline w-4 h-4" />
+          <FileText className="w-4 h-4" />
           Resume
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
         </Link>
       </li>
     </ul>
@@ -58,7 +60,7 @@ const Navbar = () => {
             href="#home"
             className={`text-xl font-bold transition-colors ${textColor} hover:text-lavender`}
           >
-            Aaron
+            Aaron Fernandes
           </a>
 
           {/* Burger / X Toggle */}
@@ -108,7 +110,7 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="sm:hidden overflow-hidden border-t border-white/10"
           >
-            <div className="flex justify-center py-4">
+            <div className="flex justify-center py-6">
               <Navigation isMobile onLinkClick={() => setIsOpen(false)} />
             </div>
           </motion.div>

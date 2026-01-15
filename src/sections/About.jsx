@@ -18,19 +18,20 @@ const About = ({id}) => {
   // [#2E3944]
   // [#212A31] 
   return (
-    <section id={id} className="c-space section-spacing py-0 sm:py-[10rem] md:py-0" id="about">
-      <h2 className={`text-heading ${mainTextColor} `}>About Me</h2>
+    <section id="about" className="c-space section-spacing py-0 sm:py-[10rem] md:py-0">
+      <h2 className="text-heading text-white">About Me</h2>
      <div className="grid grid-cols-1 auto-rows-auto gap-6 md:grid-cols-6 md:auto-rows-auto items-start mt-12">
 
         {/* Grid 1 */}
         
        <div className="
   flex flex-col items-center justify-center gap-6 p-6
-  bg-gradient-to-b to-[#2E3944] from-[#212A31] rounded-2xl
+  rounded-2xl
   row-span-1 h-auto
   md:row-span-2 md:col-span-3  md:h-full
-  relative overflow-hidden hover:-translate-y-1 duration-200
-">
+  relative overflow-hidden text-white
+" style={{ backgroundColor: '#212A31' }}
+>
           <div className="flex justify-center items-center  w-full h-[350px]">
             {/* <ImageBlockExporter imageUrls={["/assets/coing_pov1.png","assets/walking_robot_reward.webp","/assets/07_stateestimation_fig.webp", "/assets/cnn_training.webp","/assets/image-processing-1.webp","/assets/Gaussianimageprocessing.webp"]}/>
             */}
@@ -43,7 +44,7 @@ const About = ({id}) => {
 
           <div className="flex flex-col flex-grow items-center justify-around bg-transparent  text-center px-4">
             <p className="text-3xl mx-4">Hi, I'm Aaron</p>
-            <p className="subtext">I'm a machine learning engineer with a focus on deep learning, computer vision, and reinforcement learning. I also bring experience in cloud infrastructure and full-stack development, allowing me to take ML systems from research to scalable production.
+            <p className="subtext">I'm a Machine Learning Engineer and Researcher specializing in Computer Vision, Diffusion Models, and Reinforcement Learning. I hold an M.S. in Intelligent Systems Engineering, with Computer Engineering as the Track, from Indiana University, where I developed expertise in bridging cutting-edge AI research with practical implementation, from biomedical imaging pipelines to scalable cloud infrastructure.
             </p>
           </div>
 
@@ -56,31 +57,33 @@ const About = ({id}) => {
 
 <div
   className="
-    p-3 bg-gradient-to-b from-[#D3D9D4] to-[#748D92] rounded-2xl grid-2 text-center
-    row-span-2 md:col-span-3 relative overflow-hidden hover:-translate-y-1 duration-200
+    p-3 rounded-2xl grid-2 text-center
+    row-span-2 md:col-span-3 relative overflow-hidden
     flex justify-center items-center
     w-full aspect-[3/4] md:aspect-[4/3]  min-h-[500px]
+    text-white
   "
+  style={{ backgroundColor: '#212A31' }}
 >
   <FeaturedCarousel className="w-full h-full" />
 </div>
 
 
 {/* Grid 3 */}
-<div className="p-6 bg-gradient-to-b bg-[#212A31] rounded-2xl grid-3">
+<div className="p-6 rounded-2xl grid-3 text-[#212A31]" style={{ backgroundColor: '#D3D9D4' }}>
   <div className="z-10 w-[50%]">
     <p className="headtext">Where I’m Based</p>
-    <p className="subtext">
-      Based in the United States.
+    <p className="subtext text-black">
+      In the United States
     </p>
   </div>
-  <figure className="absolute left-[30%] top-[10%]">
+  <figure className="absolute left-[30%] top-0">
     <Globe />
   </figure>
 </div>
 
 {/* Grid 4 */}
-<div className="p-6 bg-gradient-to-b bg-[#124E66] rounded-2xl grid-4">
+<div className="p-6 rounded-2xl grid-4 text-white" style={{ backgroundColor: '#124E66' }}>
   <div className="flex flex-col items-center justify-center gap-4 size-full">
     <p className="text-center headtext">
       Interested in collaborating on AI, Machine Learning, Cloud, or Web projects?
@@ -90,11 +93,11 @@ const About = ({id}) => {
 </div>
 
 {/* Grid 5 */}
-<div className="p-4 pl-6 bg-gradient-to-b bg-[#2E3944] rounded-2xl grid-5">
+<div className="p-4 pl-6 rounded-2xl grid-5 text-white" style={{ backgroundColor: '#2E3944' }}>
   <div className="z-10 w-[50%]">
-    <p className="headtext">Research Interests</p>
+    <p className="headtext">Technical Expertise</p>
     <p className="subtext">
-      Exploring machine learning, reinforcement learning for autonomous systems, computer vision, and multi-agent systems. I leverage large language models and multi-agent AI to advance automation, collaboration, and complex problem-solving. <br/><br/><strong>Tools I frequently use include Python, PyTorch, TensorFlow, AWS, GCP, and Langchain.</strong>
+      Specializing in Computer Vision, Diffusion Models, Image Processing, Reinforcement Learning, Bayesian Inference, and NLP (LLMs, Finetuning, RLHF and RAG). <br/><br/><strong>ML Frameworks:</strong> PyTorch, TensorFlow, JAX, Triton, Ray, vLLM, Gymnasium, HuggingFace Transformers, Scikit-learn <br/><strong>Cloud/HPC:</strong> AWS, Docker, Kubernetes, Slurm, MPI, Spark, Hadoop <br/><strong>Programming:</strong> Python, C++, Java, JavaScript/TypeScript, SQL
     </p>
   </div>
 

@@ -4,12 +4,11 @@ import { useTheme } from "../ThemeContext";
 
 const Experiences = ({id}) => {
   const { isBright } = useTheme();
-  const reversedExperiences = [...experiences].reverse();
   
   return (
     <section id={id} className="w-full bg-transparent py-20 px-6">
       <div className="w-full">
-        <Timeline data={reversedExperiences} />
+        <Timeline data={experiences} />
       </div>
     </section>  
   );

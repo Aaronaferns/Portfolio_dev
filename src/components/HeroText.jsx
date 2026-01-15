@@ -1,21 +1,21 @@
 import { FlipWords } from "./FlipWords";
 import { motion } from "motion/react";
-import { useTheme } from "../ThemeContext"; 
+import { useTheme } from "../ThemeContext";
 
 const HeroText = ({ }) => {
   const { isBright, mainTextColor, secondaryTextColor } = useTheme();
   // Use this boolean to conditionally apply classes or styles
 
-  
 
-  const words = ["Hi-Perf", "Secure", "SOTA", "Scalable"];
+
+  const words = ["Computer Vision", "Diffusion Models", "Reinforcement Learning", "Scalable AI"];
   const variants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
   };
 
   return (
-    <div className={`z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text`}>
+    <div className={`absolute left-0 top-0 w-full z-20 mt-40 text-left md:mt-64 rounded-3xl bg-clip-text flex items-start justify-start max-w-7xl px-4`}>
       {/* Desktop View */}
       <div className="flex-col hidden md:flex c-space">
         <motion.h1
@@ -35,7 +35,7 @@ const HeroText = ({ }) => {
             animate="visible"
             transition={{ delay: 1.2 }}
           >
-            An ML Engineer <br /> And Developer <br /> Dedicated to bring 
+            ML Engineer & Researcher <br /> Specializing in <br /> Advancing
           </motion.p>
           <motion.div
             variants={variants}
@@ -55,7 +55,7 @@ const HeroText = ({ }) => {
             animate="visible"
             transition={{ delay: 1.8 }}
           >
-            AI to the Real-World
+            AI Research to Production
           </motion.p>
         </div>
       </div>
@@ -78,7 +78,7 @@ const HeroText = ({ }) => {
             animate="visible"
             transition={{ delay: 1.2 }}
           >
-            Building
+            Advancing
           </motion.p>
           <motion.div
             variants={variants}
@@ -99,7 +99,7 @@ const HeroText = ({ }) => {
             animate="visible"
             transition={{ delay: 1.8 }}
           >
-            ML Solutions
+            to Production
           </motion.p>
         </div>
       </div>

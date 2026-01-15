@@ -190,9 +190,9 @@ const Contact = ({ id }) => {
         refresh
       />
 
-      <div className="flex flex-col items-center justify-center max-w-md p-10 mx-auto rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 shadow-2xl border border-white/10 text-center">
-        <h2 className="text-4xl font-bold mb-4 text-white">Connect with Me</h2>
-        <p className="font-medium text-gray-300 mb-10">
+      <div className="flex flex-col items-center justify-center max-w-md p-10 mx-auto rounded-3xl grid-teal-color shadow-2xl border text-center">
+        <h2 className="text-4xl font-bold mb-4 text-inherit">Connect with Me</h2>
+        <p className="font-medium text-inherit opacity-80 mb-10">
           You can find me on GitHub and LinkedIn. Let’s connect and collaborate!
         </p>
 

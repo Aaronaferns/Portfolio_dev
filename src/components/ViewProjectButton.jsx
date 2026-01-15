@@ -37,7 +37,7 @@ const ViewProjectButton = ({ href, name, isGithub = false, onClick }) => {
       onClick={handleClick}
       whileHover={{ y: -5 }}
       whileTap={{ scale: 1.05 }}
-      className="relative px-4 py-2 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden"
+      className="relative px-4 py-2 text-sm text-center text-white rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden"
     >
       <AnimatePresence mode="wait">
         {clicked ? (

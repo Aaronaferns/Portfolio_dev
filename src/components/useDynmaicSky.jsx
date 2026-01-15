@@ -219,30 +219,11 @@ export function useDynamicSky(testHour) {
     }
   }, [testHour]);
 
-  // const hour = testHour ?? new Date().getHours();
-  const hour = 2;
+  const hour = testHour ?? new Date().getHours();
 
-  // 🌍 Apply sky settings based on time
-  let skySettings;
-  if (hour >= 5 && hour < 7) {
-    skySettings = skySettingsComp.earlyMorning;
-  } else if (hour >= 7 && hour < 12) {
-    skySettings = skySettingsComp.morning;
-  } else if (hour >= 12 && hour < 15) {
-    skySettings = skySettingsComp.noon;
-  } else if (hour >= 15 && hour < 17) {
-    skySettings = skySettingsComp.afternoon;
-  } else if (hour >= 17 && hour < 18) {
-    skySettings = skySettingsComp.evening;
-  } else if (hour >= 18 && hour < 19) {
-    skySettings = skySettingsComp.sunset;
-  } else if (hour >= 19 && hour < 21) {
-    skySettings = skySettingsComp.twilight;
-  } else {
-    skySettings = skySettingsComp.night;
-  }
-
-  const isBright = hour >= 6 && hour < 19;
+  // 🌍 Force night mode settings
+  const skySettings = skySettingsComp.night;
+  const isBright = false; // Always night mode
 
   // 🌙 Moon opposite sun
   const moonPosition = [
