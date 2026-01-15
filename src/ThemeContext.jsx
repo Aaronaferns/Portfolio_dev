@@ -6,10 +6,11 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [isBright, setIsBright] = useState(false);
 
-  useEffect(() => {
-    const hour = new Date().getHours();
-    setIsBright(hour >= 5 && hour < 17);
-  }, []);
+  // Force dark mode - comment out the automatic time-based switching
+  // useEffect(() => {
+  //   const hour = new Date().getHours();
+  //   setIsBright(hour >= 5 && hour < 17);
+  // }, []);
 
   const mainTextColor = isBright ? "text-gray-900" : "text-white";
   const secondaryTextColor = isBright ? "text-gray-500" : "text-gray-300";
