@@ -170,6 +170,7 @@ import { mySocials } from "../constants";
 import React, { useEffect } from "react";
 import { Particles } from "../components/Particles";
 import { trackSectionView } from "../utils/analytics";
+import CopyEmailButton from "../components/CopyEmailButton";
 
 
 const Contact = ({ id }) => {
@@ -196,22 +197,25 @@ const Contact = ({ id }) => {
           You can find me on GitHub and LinkedIn. Let’s connect and collaborate!
         </p>
 
-        <div className="flex gap-10">
-          {mySocials.map((social, index) => (
-            <a
-              href={social.href}
-              key={index}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transform transition-all duration-500 hover:scale-125 hover:shadow-lg hover:-translate-y-2"
-            >
-              <img
-                src={social.icon}
-                alt={social.name}
-                className="w-12 h-12" // larger icons
-              />
-            </a>
-          ))}
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex gap-10">
+            {mySocials.map((social, index) => (
+              <a
+                href={social.href}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transform transition-all duration-500 hover:scale-125 hover:shadow-lg hover:-translate-y-2"
+              >
+                <img
+                  src={social.icon}
+                  alt={social.name}
+                  className="w-12 h-12" // larger icons
+                />
+              </a>
+            ))}
+          </div>
+          <CopyEmailButton />
         </div>
       </div>
     </section>
