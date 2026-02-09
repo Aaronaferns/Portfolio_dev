@@ -4,7 +4,7 @@ import { Download } from 'lucide-react';
 const WebResume = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/ResumeAaronFernandesMLE.pdf';
+    link.href = '/aaron_fernandes_ML.pdf';
     link.download = 'Aaron_Fernandes_Resume.pdf';
     link.click();
   };
@@ -93,7 +93,7 @@ const WebResume = () => {
             color: '#AAAAAA'
           }}>
             <div>AWS Certified Developer Associate</div>
-            <div>+1 (930) 333-4174 • aaronferns38@gmail.com</div>
+            <div>+1 (930) 333-4174 • aaron.fernandes.ml@gmail.com</div>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <a href="https://aaronferns.com" style={{ color: '#CCCCCC', textDecoration: 'none' }}>aaronferns.com</a>
               <a href="https://github.com/Aaronaferns" style={{ color: '#CCCCCC', textDecoration: 'none' }}>github.com/Aaronaferns</a>
