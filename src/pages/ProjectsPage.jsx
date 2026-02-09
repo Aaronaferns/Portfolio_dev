@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
 
@@ -12,6 +12,17 @@ export default function ProjectsPage() {
     { id: "deepmpc", component: DeepMPCProject },
     // { id: "otherproject", component: OtherProject },
   ];
+
+  // Handle smooth scrolling to anchor links
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
 
   return (
     <div className="relative bg-transparent text-white min-h-screen z-10 px-4">

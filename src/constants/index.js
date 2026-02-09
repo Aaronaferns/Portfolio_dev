@@ -168,32 +168,69 @@ export const mySocials = [
 
 export const experiences = [
   {
-    title: "Research Data Scientist (Computer Vision)",
-    job: "Leung Research Group, Indiana University",
-    date: "Apr 2024 - Present",
-    contents: [
-      "Developed OCT-to-histology translation pipeline using CNN-GRU + Transformers, reducing FID by 50% and improving tissue morphology realism",
-      "Implemented diffeomorphic registration with VoxelMorph-style U-Net, reducing alignment error by 10%",
-      "Built HPC FDTD simulation pipeline with Slurm/MPI, achieving 90% faster generation of 5K+ samples and 70% speedup via U-Net surrogates"
+    title: "ML Research Engineer",
+    job: "Leung Research Group",
+    date: "2024 - Present",
+    highlights: [
+      {
+        metric: "50%",
+        description: "Reduced FID vs. Fourier-domain baselines by architecting unpaired video-to-image translation pipeline using CNN-GRU and Transformer architectures in PyTorch",
+        tags: ["Computer Vision", "PyTorch", "Transformers"]
+      },
+      {
+        metric: "90%",
+        description: "Decreased simulation wall-clock time by engineering scalable HPC data-generation pipelines with Slurm + MPI for metasurface simulations",
+        tags: ["HPC", "Slurm", "MPI"]
+      },
+      {
+        metric: "Neural Networks",
+        description: "Accelerated metasurface design iteration by training and evaluating neural surrogate models to approximate complex FDTD/FEM solvers",
+        tags: ["Deep Learning", "FEM", "Surrogate Models"]
+      },
+      {
+        metric: "VoxelMorph",
+        description: "Improved frame alignment accuracy by using VoxelMorph-style diffeomorphic registration for temporal consistency in OCT video processing",
+        tags: ["Medical Imaging", "Registration", "OCT"]
+      }
     ],
   },
   {
-    title: "Machine Learning Engineer (Reinforcement Learning)",
+    title: "ML Engineer (RL)",
     job: "Indiana University",
-    date: "Jan 2025 - June 2025",
-    contents: [
-      "Built multi-goal sparse-reward RL pipeline in MuJoCo with custom benchmarks and goal-conditioned SAC + HER, boosting success rate from 15% to 55%",
-      "Implemented SVGG curriculum learning with KDE goal selection and scaled to 100+ reproducible experiments using Hydra + W&B",
-      "Designed evaluation tooling for goal-conditioned policies with comprehensive replay optimization and relabeling strategies"
+    date: "2025",
+    highlights: [
+      {
+        metric: "55%",
+        description: "Boosted task success rate from 15% to 55% by implementing goal-conditioned SAC + HER and SVGG curriculum learning from scratch in PyTorch",
+        tags: ["Reinforcement Learning", "SAC", "HER"]
+      },
+      {
+        metric: "100+",
+        description: "Ensured experiment reproducibility by integrating MLflow for tracking training runs, including model versioning and automated recovery",
+        tags: ["MLflow", "Experiment Tracking", "MLOps"]
+      },
+      {
+        metric: "Stability",
+        description: "Optimized training stability through modular replay buffers with scheduling, mini-batch updates, gradient clipping, and target network updates",
+        tags: ["Training Optimization", "Replay Buffers", "Stability"]
+      }
     ],
   },
   {
     title: "Software Engineer",
-    job: "Tata Consultancy Services (HDFC Bank)",
-    date: "Jan 2022 - Jan 2023",
-    contents: [
-      "Built microservices transaction system with Spring Boot, handling 100K+ daily transactions at 99.9% uptime and sub-200ms latency",
-      "Automated reconciliation workflows, reducing error rate from 12% to 3% using Java, Hibernate, and REST APIs"
+    job: "Tata Consultancy Services",
+    date: "2022 - 2023",
+    highlights: [
+      {
+        metric: "100K+",
+        description: "Supported daily transactions by developing microservices-based transaction systems using Java, Spring Boot, and Hibernate in production banking",
+        tags: ["Java", "Spring Boot", "Microservices"]
+      },
+      {
+        metric: "99.9%",
+        description: "Maintained uptime while collaborating in cross-functional teams to support enterprise banking systems with strict CI/CD protocols",
+        tags: ["Banking", "CI/CD", "Enterprise Systems"]
+      }
     ],
   },
 ];
