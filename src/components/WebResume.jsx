@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Download } from 'lucide-react';
 
 const WebResume = () => {
@@ -29,19 +30,20 @@ const WebResume = () => {
         alignItems: 'center',
         marginBottom: '3rem'
       }}>
-        <button
-          onClick={() => window.history.back()}
+        <Link
+          to="/"
           style={{
             padding: '0.5rem 1rem',
             backgroundColor: 'transparent',
             color: '#CCCCCC',
             border: 'none',
             cursor: 'pointer',
-            fontSize: '0.9rem'
+            fontSize: '0.9rem',
+            textDecoration: 'none'
           }}
         >
           ← Back
-        </button>
+        </Link>
         <button
           onClick={handleDownload}
           style={{
