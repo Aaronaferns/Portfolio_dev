@@ -15,7 +15,7 @@ const HeroText = ({ }) => {
   };
 
   return (
-    <div className={`absolute left-0 top-0 w-full z-20 mt-40 text-left md:mt-64 rounded-3xl bg-clip-text flex items-start justify-start max-w-7xl px-4`}>
+    <div className={`absolute left-0 top-0 w-full z-10 mt-40 text-left md:mt-64 rounded-3xl bg-clip-text flex items-start justify-start max-w-7xl px-4`}>
       {/* Desktop View */}
       <div className="flex-col hidden md:flex c-space">
         <motion.h1

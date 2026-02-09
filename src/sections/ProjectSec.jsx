@@ -83,17 +83,17 @@ export default function ProjectsSection({ isActive = true }) {
               shadow-mapSize-height={2048}
             />
             <Suspense fallback={null}>
-              <Float onClick={() => navigate("/projects")}>
+              <Float onClick={() => navigate("/projects#deepmpc")}>
                 <a.group position={activePositions[0]}>
                   <Robot scale={2} />
                 </a.group>
               </Float>
-              <Float>
+              <Float onClick={() => navigate("/projects")}>
                 <a.group rotation={[Math.PI / 2, 0, 0]} position={activePositions[1]}>
                   <Eye scale={6} />
                 </a.group>
               </Float>
-              <Float>
+              <Float onClick={() => navigate("/projects")}>
                 <a.group rotation={brainSpin.rotation} position={activePositions[2]}>
                   <HoverableBrain />
                 </a.group>

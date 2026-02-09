@@ -44,7 +44,7 @@ const About = ({id}) => {
 
           <div className="flex flex-col flex-grow items-center justify-around bg-transparent  text-center px-4">
             <p className="text-3xl mx-4">Hi, I'm Aaron</p>
-            <p className="subtext">I'm a Machine Learning Engineer and Researcher specializing in Computer Vision, Diffusion Models, and Reinforcement Learning. I hold an M.S. in Intelligent Systems Engineering, with Computer Engineering as the Track, from Indiana University, where I developed expertise in bridging cutting-edge AI research with practical implementation, from biomedical imaging pipelines to scalable cloud infrastructure.
+            <p className="subtext">I am a Machine Learning Engineer specializing in the intersection of scalable infrastructure and advanced probabilistic modeling. My expertise lies in bridging the gap between research-level Reinforcement Learning and the high-performance engineering required to train foundation models at scale. With a Master’s in Intelligent Systems Engineering from Indiana University, I focus on building AI systems that are both theoretically sound and computationally efficient—from designing Visual Language Models to engineering HPC pipelines that reduce compute overhead by 90%.
             </p>
           </div>
 
@@ -95,9 +95,9 @@ const About = ({id}) => {
 {/* Grid 5 */}
 <div className="p-4 pl-6 rounded-2xl grid-5 text-white" style={{ backgroundColor: '#2E3944' }}>
   <div className="z-10 w-[50%]">
-    <p className="headtext">Technical Expertise</p>
+    <p className="headtext">Tools</p>
     <p className="subtext">
-      Specializing in Computer Vision, Diffusion Models, Image Processing, Reinforcement Learning, Bayesian Inference, and NLP (LLMs, Finetuning, RLHF and RAG). <br/><br/><strong>ML Frameworks:</strong> PyTorch, TensorFlow, JAX, Triton, Ray, vLLM, Gymnasium, HuggingFace Transformers, Scikit-learn <br/><strong>Cloud/HPC:</strong> AWS, Docker, Kubernetes, Slurm, MPI, Spark, Hadoop <br/><strong>Programming:</strong> Python, C++, Java, JavaScript/TypeScript, SQL
+      <strong>ML Frameworks:</strong> PyTorch, TensorFlow, JAX, Triton, Ray, vLLM, Gymnasium, HuggingFace Transformers, Scikit-learn <br/><strong>Cloud/HPC:</strong> AWS, Docker, Kubernetes, Slurm, MPI, Spark, Hadoop <br/><strong>Programming:</strong> Python, C++, Java, JavaScript/TypeScript, SQL
     </p>
   </div>
 

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "../ThemeContext";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { trackResumeDownload } from "../utils/analytics";
 import { Link } from "react-router-dom";
 
 function Navigation({ isMobile, onLinkClick }) {
   const { isBright } = useTheme();
   const linkColor = isBright ? "text-gray-900" : "text-white";
-  const baseClasses = `nav-link ${linkColor} transition-all duration-300 hover:text-lavender hover:drop-shadow-[0_0_12px_#c4b5fd] hover:scale-105 relative group`;
+  const baseClasses = `nav-link ${linkColor} transition-colors duration-300 hover:text-[#748D92] relative group`;
 
   return (
     <ul
@@ -24,7 +24,7 @@ function Navigation({ isMobile, onLinkClick }) {
             onClick={isMobile ? onLinkClick : undefined}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-lavender to-purple-400 group-hover:w-full transition-all duration-500 ease-out"></span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#748D92] group-hover:w-full transition-all duration-300"></span>
           </a>
         </li>
       ))}
@@ -35,11 +35,10 @@ function Navigation({ isMobile, onLinkClick }) {
             trackResumeDownload(e);
             if (isMobile) onLinkClick?.();
           }}
-          className={`${baseClasses} flex items-center gap-2`}
+          className={`px-4 py-2 text-base font-bold text-[#212A31] bg-[#D3D9D4] rounded-md transition-all duration-300 hover:bg-[#C5CBC6] hover:scale-105 hover:shadow-lg hover:shadow-[#D3D9D4]/40 relative group`}
         >
-          <FileText className="w-4 h-4" />
           Resume
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#212A31] group-hover:w-full transition-all duration-300"></span>
         </Link>
       </li>
     </ul>
@@ -58,7 +57,7 @@ const Navbar = () => {
           {/* Brand */}
           <a
             href="#home"
-            className={`text-xl font-bold transition-colors ${textColor} hover:text-lavender`}
+            className={`text-xl font-bold transition-colors ${textColor} hover:text-[#748D92]`}
           >
             Aaron Fernandes
           </a>
@@ -66,7 +65,7 @@ const Navbar = () => {
           {/* Burger / X Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`sm:hidden p-1 rounded-md hover:bg-white/10 transition-colors relative z-30 ${textColor}`}
+            className={`sm:hidden p-1 rounded-md hover:bg-[#748D92]/20 transition-colors relative z-30 ${textColor}`}
           >
             <AnimatePresence mode="wait" initial={false}>
               {isOpen ? (

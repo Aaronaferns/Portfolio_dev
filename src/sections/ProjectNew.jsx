@@ -54,7 +54,7 @@ export default function ProjectsSection({id}) {
           {latestProjects.map((project, i) => (
             <div
               key={`latest-${i}`}
-              className={`group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
+              className={`group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer ${
                 i % 4 === 0
                   ? 'grid-default-color'
                   : i % 4 === 1
@@ -63,6 +63,16 @@ export default function ProjectsSection({id}) {
                   ? 'grid-black-color'
                   : 'grid-teal-color'
               }`}
+              onClick={() => {
+                // Scroll to the project in the "All Projects" section
+                const projectElements = document.querySelectorAll('[data-project-title]');
+                const targetProject = Array.from(projectElements).find(el =>
+                  el.getAttribute('data-project-title') === project.title
+                );
+                if (targetProject) {
+                  targetProject.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -130,6 +140,7 @@ export default function ProjectsSection({id}) {
               {categoryProjects.map((project, i) => (
   <div
     key={i}
+    data-project-title={project.title}
     className={`group relative overflow-hidden ${
       i % 4 === 0
         ? 'grid-default-color'
