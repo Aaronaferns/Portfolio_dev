@@ -1,13 +1,442 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aaron</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aaron Fernandes</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --mut:#6b6b6b;
+    --faint:#999;
+    --rule:#e6e6e6;
+    --link:#1a1a1a;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Charter","Georgia","Times New Roman",serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:680px;
+    margin:0 auto;
+    padding:76px 24px 120px;
+  }
+
+  /* header */
+  .top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:4px;
+  }
+  .top .who{min-width:0;}
+  .photo{
+    width:76px;
+    height:76px;
+    flex:none;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center 22%;
+    background:#f2f2f2;
+    display:block;
+  }
+  h1{
+    font-size:23px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0 0 4px;
+  }
+  .role{
+    color:var(--mut);
+    margin:0 0 20px;
+    font-size:17px;
+  }
+  .meta{
+    font-size:14px;
+    color:var(--mut);
+    margin:0 0 8px;
+    letter-spacing:0.01em;
+  }
+  .meta a{color:var(--mut);}
+  .meta .sep{color:var(--faint);padding:0 8px;}
+
+  /* intro */
+  .intro{margin:34px 0 8px;}
+  .intro p{margin:0 0 16px;}
+
+  /* section machinery */
+  section{margin-top:54px;}
+  .label{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin:0 0 22px;
+  }
+
+  /* rows: shared layout for work + projects */
+  .row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:4px 20px;
+    padding:20px 0;
+    border-top:1px solid var(--rule);
+  }
+  .row:last-child{border-bottom:1px solid var(--rule);}
+  .row .head{
+    font-size:17px;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.005em;
+  }
+  .row .head a{
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid #cfcfcf;
+  }
+  .row .head a:hover{border-bottom-color:var(--ink);}
+  .row .when{
+    font-size:13.5px;
+    color:var(--faint);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    white-space:nowrap;
+    padding-top:3px;
+  }
+  .row .desc{
+    grid-column:1 / -1;
+    color:var(--mut);
+    font-size:15.5px;
+    line-height:1.6;
+    margin:6px 0 0;
+  }
+  .fig{
+    grid-column:1 / -1;
+    margin:16px 0 2px;
+  }
+  .fig img{
+    width:100%;
+    display:block;
+    border:1px solid var(--rule);
+    border-radius:6px;
+    background:#fff;
+  }
+  .fig figcaption{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:12px;
+    color:var(--faint);
+    letter-spacing:0.02em;
+    margin-top:9px;
+  }
+  .row .stack{
+    grid-column:1 / -1;
+    margin-top:14px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:12px;
+    color:var(--faint);
+    letter-spacing:0.02em;
+  }
+  .row .stack span{white-space:nowrap;}
+  .row .stack span::after{content:"·";padding:0 7px;color:#d0d0d0;}
+  .row .stack span:last-child::after{content:"";padding:0;}
+
+  a{color:var(--link);}
+
+  /* timeline — career progression */
+  .tl{
+    border-left:1px solid var(--rule);
+    margin-left:5px;
+  }
+  .tl-item{
+    position:relative;
+    padding:0 0 30px 28px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-5px;
+    top:6px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#fff;
+    border:1.5px solid #c4c4c4;
+  }
+  .tl-item.now::before{
+    background:var(--ink);
+    border-color:var(--ink);
+  }
+  .tl-item .when2{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    color:var(--faint);
+    margin:0 0 3px;
+  }
+  .tl-item h3{
+    font-size:16.5px;
+    font-weight:600;
+    letter-spacing:-0.005em;
+    margin:0 0 2px;
+  }
+  .tl-item .org{
+    color:var(--mut);
+    font-size:15px;
+    margin:0 0 7px;
+  }
+  .tl-item p.note{
+    color:var(--mut);
+    font-size:15px;
+    line-height:1.58;
+    margin:0;
+  }
+
+  /* path — quick overview */
+  .path{list-style:none;margin:0;padding:0;}
+  .path li{
+    display:grid;
+    grid-template-columns:104px 1fr;
+    gap:2px 18px;
+    padding:11px 0;
+    border-top:1px solid var(--rule);
+    font-size:15.5px;
+    line-height:1.5;
+  }
+  .path li:last-child{border-bottom:1px solid var(--rule);}
+  .path .yr{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:12.5px;
+    color:var(--faint);
+    letter-spacing:0.02em;
+    padding-top:3px;
+    white-space:nowrap;
+  }
+  .path .what b{font-weight:600;}
+  .path .what .muted{color:var(--mut);}
+  @media (max-width:520px){
+    .path li{grid-template-columns:1fr;gap:1px;}
+    .path .yr{padding-top:0;}
+  }
+
+  /* footer / contact */
+  footer{
+    margin-top:64px;
+    padding-top:22px;
+    border-top:1px solid var(--rule);
+    font-size:14px;
+    color:var(--mut);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  footer a{color:var(--mut);text-decoration:none;border-bottom:1px solid #d8d8d8;}
+  footer a:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  footer .sep{color:var(--faint);padding:0 10px;}
+
+  @media (max-width:520px){
+    .wrap{padding:52px 20px 90px;}
+    .row .when{grid-column:1 / -1;padding-top:2px;order:3;}
+    .meta .sep{padding:0 5px;}
+    footer .sep{display:block;height:0;overflow:hidden;padding:0;}
+    footer a{display:inline-block;margin-right:16px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="top">
+      <img class="photo" src="/Gemini_Generated_Image_b116nvb116nvb116.png" alt="Aaron Fernandes"
+           onerror="this.style.display='none'">
+      <div class="who">
+        <h1>Aaron Leevord Fernandes</h1>
+        <p class="role">Machine Learning Engineer — generative models and computer vision, taken from research prototype to trained model at scale.</p>
+      </div>
+    </div>
+    <p class="meta">
+      <a href="mailto:aaron.fernandes.ml@gmail.com">aaron.fernandes.ml@gmail.com</a>
+      <span class="sep">/</span>
+      <a href="https://github.com/Aaronaferns">github</a>
+      <span class="sep">/</span>
+      <a href="https://linkedin.com/in/aaron-leevord-fernandes">linkedin</a>
+      <span class="sep">/</span>
+      <a href="/Resume_Aaron_Fernandes.pdf">resume</a>
+    </p>
+  </header>
+
+  <div class="intro">
+    <p>I build and ship machine learning systems end to end — training models in PyTorch, optimizing them for inference, and deploying them behind real infrastructure. My work spans computer vision, generative models, and reinforcement learning, with a strong focus on performance, scalable training, and production deployment (ONNX, CoreML, Docker, AWS, FastAPI).</p>
+    <p>Currently a research assistant on synthetic driving data for autonomous systems at Indiana University. I came to ML from software engineering — production backend work in enterprise banking before a master's in AI — and I'm comfortable owning a model from experiment to deployment.</p>
+  </div>
+
+  <section>
+    <div class="label">Path</div>
+    <ul class="path">
+      <li>
+        <span class="yr">2026 – now</span>
+        <span class="what"><b>Graduate Research Assistant, Astemo × Indiana University</b> — generative models for autonomous driving: image editing &amp; generation, video / driving world models, vLLM-Omni multimodal inference, and geometry &amp; computer-vision benchmarking to validate synthetic data. <span class="muted">Earlier in 2026: backend engineering at Heartland.</span></span>
+      </li>
+      <li>
+        <span class="yr">2024 – 2025</span>
+        <span class="what"><b>ML engineering &amp; research</b> — computer vision at Leung Research Group, reinforcement learning at Indiana University.</span>
+      </li>
+      <li>
+        <span class="yr">2024</span>
+        <span class="what"><b>NCAA Women's Basketball Prediction</b> — Random Forest tournament model; ranked <b>top 5 of 67</b> in a national competition.</span>
+      </li>
+      <li>
+        <span class="yr">2023 – 2025</span>
+        <span class="what"><b>M.S. Intelligent Systems Engineering, Indiana University Bloomington</b> <span class="muted">(GPA 3.9)</span> — the pivot into AI: computer vision, diffusion, reinforcement learning.</span>
+      </li>
+      <li>
+        <span class="yr">2022 – 2023</span>
+        <span class="what"><b>Software Engineer, Tata Consultancy Services</b> — Java, Spring Boot microservices for HDFC Bank <span class="muted">(100K+ daily transactions)</span>.</span>
+      </li>
+      <li>
+        <span class="yr">2017 – 2021</span>
+        <span class="what"><b>B.S. Electronics &amp; Telecommunications, Goa College of Engineering</b> — networking &amp; IoT; built a fuzzer for the Contiki IoT operating system.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Projects</div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/re-diffusion">re-diffusion</a></p>
+      <div class="when">2025 – present</div>
+      <p class="desc">A from-scratch latent Diffusion Transformer trained with rectified flow on 2M LAION-Aesthetics images. Attention, AdaLN-Zero conditioning, patchify, the rectified-flow objective, Euler sampler, and classifier-free guidance are all hand-written (~600 lines). A profiler-driven attention fix gave <strong>2.2× throughput and 2× less memory</strong>; streaming data pipeline measured at 757 imgs/s over 1,976 WebDataset shards.</p>
+      <figure class="fig">
+        <img src="/re-diffusion/assets/figures/gpu_time_share.png" alt="Share of CUDA time per step across pipeline stages">
+        <figcaption>Where the profiler pointed: 42% of every step re-encodes frozen VAE/CLIP models — precomputable — and fp32 attention dominated the trainable cost.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="/re-diffusion/assets/figures/throughput_attention.png" alt="Training throughput: manual fp32 attention vs fused SDPA">
+        <figcaption>The fix: routing QKV through fused SDPA / FlashAttention gave <strong>2.2× throughput</strong> and cleared the earlier OOM wall.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="/re-diffusion/assets/figures/memory_vs_batch.png" alt="Peak GPU memory vs batch size, manual vs SDPA">
+        <figcaption>Peak memory: the O(N²) fp32 attention was the wall — 35.4 GB at batch 16 fell to 17.2 GB, fitting the L40S with room to spare.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="/re-diffusion/assets/figures/scaling.png" alt="Data-parallel scaling across GPUs">
+        <figcaption>Multi-GPU: 86% data-parallel scaling efficiency under DeepSpeed ZeRO-2, with NCCL all-reduce at just 13% of CUDA time.</figcaption>
+      </figure>
+      <div class="stack"><span>PyTorch</span><span>MM-DiT</span><span>Rectified Flow</span><span>DeepSpeed ZeRO-2</span><span>Slurm</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/Building-Diffusion-Models">Diffusion to Consistency</a></p>
+      <div class="when">2025</div>
+      <p class="desc">A small, readable diffusion repo that starts from a vanilla DDPM ε-prediction model and moves toward modern diffusion in minimal additive steps. U-Net with timestep embeddings and selective self-attention on CIFAR-10, EMA, checkpointing, and FID reporting every 10k steps — built to be instrumented and legible rather than a heavy framework.</p>
+      <figure class="fig">
+        <img src="/Building-Diffusion-Models/images/image_grid.png" alt="Generated CIFAR-10 samples from the diffusion model">
+        <figcaption>Samples generated by the trained model, denoising from noise — CIFAR-10, 32×32.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="/Building-Diffusion-Models/images/fid_plot.png" alt="Fréchet Inception Distance over training steps">
+        <figcaption>FID falling from ~135 to a best of 25.5 over 100k training steps.</figcaption>
+      </figure>
+      <div class="stack"><span>PyTorch</span><span>DDPM</span><span>U-Net</span><span>FID</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/vit-unsupervised-anomaly-detection">Unsupervised Industrial Anomaly Detection</a></p>
+      <div class="when">2024 – 2025</div>
+      <p class="desc">A Vision Transformer autoencoder with a Capsule Network and Gaussian mixture scoring for detecting and localizing defects in industrial imagery. Trained on the BeanTech (BTAD) dataset, improving AUROC from <strong>0.78 to 0.94</strong> over ResNet-50 baselines.</p>
+      <figure class="fig">
+        <img src="/vit-unsupervised-anomaly-detection/ViTloss.png" alt="Training losses: total, SSIM, reconstruction, and MDN">
+        <figcaption>Training curves — total, SSIM, reconstruction, and MDN losses converging over training steps.</figcaption>
+      </figure>
+      <div class="stack"><span>PyTorch</span><span>ViT-B/16</span><span>Capsule Net</span><span>GMM</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/IU-NICC_Grounded-Theory-Project">LLM-Assisted Grounded Theory</a></p>
+      <div class="when">Oct 2024 – Dec 2024</div>
+      <p class="desc">An LLM-assisted retrieval and knowledge-graph system for grounded-theory qualitative research, built with researchers at NICC Brussels. Extracts knowledge graphs from interview transcripts and supports <strong>source-traceable</strong> querying across 200+ documents, pairing vector embeddings with graph-backed retrieval so every answer traces back to its origin passage.</p>
+      <div class="stack"><span>Python</span><span>LLMs</span><span>LlamaIndex</span><span>Neo4j</span><span>Pinecone</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/multi-goal-rl-svgg">Multi-Goal RL with SVGG</a></p>
+      <div class="when">2025</div>
+      <p class="desc">Goal-conditioned reinforcement learning combining Soft Actor-Critic, Hindsight Experience Replay, and Stein Variational Goal Generation for curriculum-style goal sampling in sparse-reward robotics environments like FetchReach. Hydra-configured, W&B-tracked.</p>
+      <div class="stack"><span>PyTorch</span><span>SAC</span><span>HER</span><span>SVGG</span><span>Hydra</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/MBRL-DeepMPC">Model-Based RL with Deep MPC</a></p>
+      <div class="when">2024</div>
+      <p class="desc">A model-based RL algorithm inspired by Deep Value-and-Predictive-Model Control: learned dynamics, value approximation, and Cross-Entropy Method planning over a prediction horizon for continuous control. Effective in dense-reward settings, with sparse rewards analyzed as the open challenge.</p>
+      <figure class="fig">
+        <img src="/MBRL-DeepMPC/Images/plots-best/dynamics_model_losses.png" alt="Training and validation loss of the learned dynamics model">
+        <figcaption>First the learned dynamics model converges — train and validation loss both driving toward zero.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="/MBRL-DeepMPC/Images/plots-best/rew_plot.png" alt="Episodic and average reward over training episodes">
+        <figcaption>Then the payoff: reward climbs to the InvertedPendulum ceiling (~1000) as the MPC planner exploits that model.</figcaption>
+      </figure>
+      <div class="stack"><span>MPC</span><span>World Models</span><span>CEM</span><span>Gymnasium</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head">ComicPaliGemma — a Vision-Language Model from scratch</p>
+      <div class="when">2025</div>
+      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM — SigLIP ViT vision encoder plus a Gemma decoder — validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5–10× faster inference</strong> than standard PyTorch attention.</p>
+      <figure class="fig">
+        <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
+        <figcaption>The model narrating a sequence of comic panels — the vision encoder reads the panels, the decoder generates the story text.</figcaption>
+      </figure>
+      <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Machine learning experience</div>
+
+    <div class="tl">
+      <div class="tl-item">
+        <p class="when2">Apr 2024 – Dec 2025</p>
+        <h3>Machine Learning Engineer, Computer Vision</h3>
+        <p class="org">Leung Research Group</p>
+        <p class="note">Self-supervised vision and computational imaging for OCT video-to-histology translation. Built U-Net surrogate models approximating FDTD optical simulations — cutting inference from ~3 min to sub-second while holding SSIM &gt; 0.85 — on HPC (SLURM/Linux).</p>
+      </div>
+
+      <div class="tl-item">
+        <p class="when2">Jan 2025 – Jun 2025</p>
+        <h3>Machine Learning Engineer, Reinforcement Learning</h3>
+        <p class="org">Indiana University</p>
+        <p class="note">Goal-conditioned RL (HER, curriculum policy optimization) for sparse-reward navigation, with experiment infrastructure orchestrating 100+ multi-seed runs via Hydra, MLflow, and W&B.</p>
+      </div>
+
+      <div class="tl-item now">
+        <p class="when2">Mar 2026 – present</p>
+        <h3>Graduate Research Assistant, Synthetic Driving Data</h3>
+        <p class="org">Indiana University (Astemo-sponsored)</p>
+        <p class="note">Building and benchmarking generative systems for autonomous driving — diffusion-based image editing and generation, video generation, and driving world models for synthetic data. Serving large-scale multimodal inference with vLLM-Omni, and applying geometry- and computer-vision-based benchmarking and validation to ensure the generated data is good enough to train on.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="mailto:aaron.fernandes.ml@gmail.com">aaron.fernandes.ml@gmail.com</a>
+    <span class="sep">/</span>
+    <a href="https://github.com/Aaronaferns">github.com/Aaronaferns</a>
+    <span class="sep">/</span>
+    <a href="https://linkedin.com/in/aaron-leevord-fernandes">linkedin</a>
+  </footer>
+
+</div>
+</body>
 </html>
