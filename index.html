@@ -152,7 +152,7 @@
 
   a{color:var(--link);}
 
-  /* timeline — career progression */
+  /* timeline: career progression */
   .tl{
     border-left:1px solid var(--rule);
     margin-left:5px;
@@ -202,7 +202,7 @@
     margin:0;
   }
 
-  /* path — quick overview */
+  /* path: quick overview */
   .path{list-style:none;margin:0;padding:0;}
   .path li{
     display:grid;
@@ -260,7 +260,7 @@
            onerror="this.style.display='none'">
       <div class="who">
         <h1>Aaron Leevord Fernandes</h1>
-        <p class="role">Machine Learning Engineer — generative models and computer vision, taken from research prototype to trained model at scale.</p>
+        <p class="role">Machine Learning Engineer working on generative models and computer vision, taking projects from research prototype to trained model at scale.</p>
       </div>
     </div>
     <p class="meta">
@@ -275,8 +275,8 @@
   </header>
 
   <div class="intro">
-    <p>I build and ship machine learning systems end to end — training models in PyTorch, optimizing them for inference, and deploying them behind real infrastructure. My work spans computer vision, generative models, and reinforcement learning, with a strong focus on performance, scalable training, and production deployment (ONNX, CoreML, Docker, AWS, FastAPI).</p>
-    <p>Currently a research assistant on synthetic driving data for autonomous systems at Indiana University. I came to ML from software engineering — production backend work in enterprise banking before a master's in AI — and I'm comfortable owning a model from experiment to deployment.</p>
+    <p>I build and ship machine learning systems end to end: training models in PyTorch, optimizing them for inference, and deploying them behind real infrastructure. My work spans computer vision, generative models, and reinforcement learning, with a strong focus on performance, scalable training, and production deployment (ONNX, CoreML, Docker, AWS, FastAPI).</p>
+    <p>Currently a research assistant on synthetic driving data for autonomous systems at Indiana University. I came to ML from software engineering (production backend work in enterprise banking before a master's in AI), and I'm comfortable owning a model from experiment to deployment.</p>
   </div>
 
   <section>
@@ -284,27 +284,27 @@
     <ul class="path">
       <li>
         <span class="yr">2026 – now</span>
-        <span class="what"><b>Graduate Research Assistant, Astemo × Indiana University</b> — generative models for autonomous driving: image editing &amp; generation, video / driving world models, vLLM-Omni multimodal inference, and geometry &amp; computer-vision benchmarking to validate synthetic data. <span class="muted">Earlier in 2026: backend engineering at Heartland.</span></span>
+        <span class="what"><b>Graduate Research Assistant, Astemo × Indiana University</b>, working on generative models for autonomous driving: image editing &amp; generation, video / driving world models, vLLM-Omni multimodal inference, and geometry &amp; computer-vision benchmarking to validate synthetic data. <span class="muted">Earlier in 2026: backend engineering at Heartland.</span></span>
       </li>
       <li>
         <span class="yr">2024 – 2025</span>
-        <span class="what"><b>ML engineering &amp; research</b> — computer vision at Leung Research Group, reinforcement learning at Indiana University.</span>
+        <span class="what"><b>ML engineering &amp; research</b>, spanning computer vision at Leung Research Group and reinforcement learning at Indiana University.</span>
       </li>
       <li>
         <span class="yr">2024</span>
-        <span class="what"><b>NCAA Women's Basketball Prediction</b> — Random Forest tournament model; ranked <b>top 5 of 67</b> in a national competition.</span>
+        <span class="what"><b>NCAA Women's Basketball Prediction</b>, a Random Forest tournament model; ranked <b>top 5 of 67</b> in a national competition.</span>
       </li>
       <li>
         <span class="yr">2023 – 2025</span>
-        <span class="what"><b>M.S. Intelligent Systems Engineering, Indiana University Bloomington</b> <span class="muted">(GPA 3.9)</span> — the pivot into AI: computer vision, diffusion, reinforcement learning.</span>
+        <span class="what"><b>M.S. Intelligent Systems Engineering, Indiana University Bloomington</b> <span class="muted">(GPA 3.9)</span>. The pivot into AI: computer vision, diffusion, reinforcement learning.</span>
       </li>
       <li>
         <span class="yr">2022 – 2023</span>
-        <span class="what"><b>Software Engineer, Tata Consultancy Services</b> — Java, Spring Boot microservices for HDFC Bank <span class="muted">(100K+ daily transactions)</span>.</span>
+        <span class="what"><b>Software Engineer, Tata Consultancy Services</b>, building Java / Spring Boot microservices for HDFC Bank <span class="muted">(100K+ daily transactions)</span>.</span>
       </li>
       <li>
         <span class="yr">2017 – 2021</span>
-        <span class="what"><b>B.S. Electronics &amp; Telecommunications, Goa College of Engineering</b> — networking &amp; IoT; built a fuzzer for the Contiki IoT operating system.</span>
+        <span class="what"><b>B.S. Electronics &amp; Telecommunications, Goa College of Engineering</b>. Networking &amp; IoT; built a fuzzer for the Contiki IoT operating system.</span>
       </li>
     </ul>
   </section>
@@ -318,7 +318,7 @@
       <p class="desc">A from-scratch latent Diffusion Transformer trained with rectified flow on 2M LAION-Aesthetics images. Attention, AdaLN-Zero conditioning, patchify, the rectified-flow objective, Euler sampler, and classifier-free guidance are all hand-written (~600 lines). A profiler-driven attention fix gave <strong>2.2× throughput and 2× less memory</strong>; streaming data pipeline measured at 757 imgs/s over 1,976 WebDataset shards.</p>
       <figure class="fig">
         <img src="/re-diffusion/assets/figures/gpu_time_share.png" alt="Share of CUDA time per step across pipeline stages">
-        <figcaption>Where the profiler pointed: 42% of every step re-encodes frozen VAE/CLIP models — precomputable — and fp32 attention dominated the trainable cost.</figcaption>
+        <figcaption>Where the profiler pointed: 42% of every step re-encodes frozen VAE/CLIP models (precomputable), and fp32 attention dominated the trainable cost.</figcaption>
       </figure>
       <figure class="fig">
         <img src="/re-diffusion/assets/figures/throughput_attention.png" alt="Training throughput: manual fp32 attention vs fused SDPA">
@@ -326,7 +326,7 @@
       </figure>
       <figure class="fig">
         <img src="/re-diffusion/assets/figures/memory_vs_batch.png" alt="Peak GPU memory vs batch size, manual vs SDPA">
-        <figcaption>Peak memory: the O(N²) fp32 attention was the wall — 35.4 GB at batch 16 fell to 17.2 GB, fitting the L40S with room to spare.</figcaption>
+        <figcaption>Peak memory: the O(N²) fp32 attention was the wall. 35.4 GB at batch 16 fell to 17.2 GB, fitting the L40S with room to spare.</figcaption>
       </figure>
       <figure class="fig">
         <img src="/re-diffusion/assets/figures/scaling.png" alt="Data-parallel scaling across GPUs">
@@ -338,10 +338,10 @@
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/Building-Diffusion-Models">Diffusion to Consistency</a></p>
       <div class="when">2025</div>
-      <p class="desc">A small, readable diffusion repo that starts from a vanilla DDPM ε-prediction model and moves toward modern diffusion in minimal additive steps. U-Net with timestep embeddings and selective self-attention on CIFAR-10, EMA, checkpointing, and FID reporting every 10k steps — built to be instrumented and legible rather than a heavy framework.</p>
+      <p class="desc">A small, readable diffusion repo that starts from a vanilla DDPM ε-prediction model and moves toward modern diffusion in minimal additive steps. U-Net with timestep embeddings and selective self-attention on CIFAR-10, EMA, checkpointing, and FID reporting every 10k steps, built to be instrumented and legible rather than a heavy framework.</p>
       <figure class="fig">
         <img src="/Building-Diffusion-Models/images/image_grid.png" alt="Generated CIFAR-10 samples from the diffusion model">
-        <figcaption>Samples generated by the trained model, denoising from noise — CIFAR-10, 32×32.</figcaption>
+        <figcaption>Samples generated by the trained model, denoising from noise (CIFAR-10, 32×32).</figcaption>
       </figure>
       <figure class="fig">
         <img src="/Building-Diffusion-Models/images/fid_plot.png" alt="Fréchet Inception Distance over training steps">
@@ -356,7 +356,7 @@
       <p class="desc">A Vision Transformer autoencoder with a Capsule Network and Gaussian mixture scoring for detecting and localizing defects in industrial imagery. Trained on the BeanTech (BTAD) dataset, improving AUROC from <strong>0.78 to 0.94</strong> over ResNet-50 baselines.</p>
       <figure class="fig">
         <img src="/vit-unsupervised-anomaly-detection/ViTloss.png" alt="Training losses: total, SSIM, reconstruction, and MDN">
-        <figcaption>Training curves — total, SSIM, reconstruction, and MDN losses converging over training steps.</figcaption>
+        <figcaption>Training curves: total, SSIM, reconstruction, and MDN losses converging over training steps.</figcaption>
       </figure>
       <div class="stack"><span>PyTorch</span><span>ViT-B/16</span><span>Capsule Net</span><span>GMM</span></div>
     </div>
@@ -381,7 +381,7 @@
       <p class="desc">A model-based RL algorithm inspired by Deep Value-and-Predictive-Model Control: learned dynamics, value approximation, and Cross-Entropy Method planning over a prediction horizon for continuous control. Effective in dense-reward settings, with sparse rewards analyzed as the open challenge.</p>
       <figure class="fig">
         <img src="/MBRL-DeepMPC/Images/plots-best/dynamics_model_losses.png" alt="Training and validation loss of the learned dynamics model">
-        <figcaption>First the learned dynamics model converges — train and validation loss both driving toward zero.</figcaption>
+        <figcaption>First the learned dynamics model converges, with train and validation loss both driving toward zero.</figcaption>
       </figure>
       <figure class="fig">
         <img src="/MBRL-DeepMPC/Images/plots-best/rew_plot.png" alt="Episodic and average reward over training episodes">
@@ -391,12 +391,12 @@
     </div>
 
     <div class="row">
-      <p class="head">ComicPaliGemma — a Vision-Language Model from scratch</p>
+      <p class="head">ComicPaliGemma: a Vision-Language Model from scratch</p>
       <div class="when">2025</div>
-      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM — SigLIP ViT vision encoder plus a Gemma decoder — validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5–10× faster inference</strong> than standard PyTorch attention.</p>
+      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM (SigLIP ViT vision encoder plus a Gemma decoder), validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5 to 10× faster inference</strong> than standard PyTorch attention.</p>
       <figure class="fig">
         <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
-        <figcaption>The model narrating a sequence of comic panels — the vision encoder reads the panels, the decoder generates the story text.</figcaption>
+        <figcaption>The model narrating a sequence of comic panels: the vision encoder reads the panels, the decoder generates the story text.</figcaption>
       </figure>
       <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
     </div>
@@ -410,7 +410,7 @@
         <p class="when2">Apr 2024 – Dec 2025</p>
         <h3>Machine Learning Engineer, Computer Vision</h3>
         <p class="org">Leung Research Group</p>
-        <p class="note">Self-supervised vision and computational imaging for OCT video-to-histology translation. Built U-Net surrogate models approximating FDTD optical simulations — cutting inference from ~3 min to sub-second while holding SSIM &gt; 0.85 — on HPC (SLURM/Linux).</p>
+        <p class="note">Self-supervised vision and computational imaging for OCT video-to-histology translation. Built U-Net surrogate models approximating FDTD optical simulations on HPC (SLURM/Linux), cutting inference from ~3 min to sub-second while holding SSIM &gt; 0.85.</p>
       </div>
 
       <div class="tl-item">
@@ -424,7 +424,7 @@
         <p class="when2">Mar 2026 – present</p>
         <h3>Graduate Research Assistant, Synthetic Driving Data</h3>
         <p class="org">Indiana University (Astemo-sponsored)</p>
-        <p class="note">Building and benchmarking generative systems for autonomous driving — diffusion-based image editing and generation, video generation, and driving world models for synthetic data. Serving large-scale multimodal inference with vLLM-Omni, and applying geometry- and computer-vision-based benchmarking and validation to ensure the generated data is good enough to train on.</p>
+        <p class="note">Building and benchmarking generative systems for autonomous driving: diffusion-based image editing and generation, video generation, and driving world models for synthetic data. Serving large-scale multimodal inference with vLLM-Omni, and applying geometry- and computer-vision-based benchmarking and validation to ensure the generated data is good enough to train on.</p>
       </div>
     </div>
   </section>
