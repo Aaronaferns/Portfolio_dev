@@ -131,6 +131,23 @@
     border-radius:6px;
     background:#fff;
   }
+  .fig .embed{
+    position:relative;
+    width:100%;
+    aspect-ratio:16 / 9;
+    border:1px solid var(--rule);
+    border-radius:6px;
+    overflow:hidden;
+    background:#000;
+  }
+  .fig .embed iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+  }
   .fig figcaption{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     font-size:12px;
@@ -260,7 +277,7 @@
            onerror="this.style.display='none'">
       <div class="who">
         <h1>Aaron Leevord Fernandes</h1>
-        <p class="role">Machine Learning Engineer working on generative models and computer vision, taking projects from research prototype to trained model at scale.</p>
+        <p class="role">Full-stack AI software engineer, ML engineer, and data scientist. I take AI systems end to end, from data and models to the backend, infrastructure, and product they run in.</p>
       </div>
     </div>
     <p class="meta">
@@ -275,8 +292,8 @@
   </header>
 
   <div class="intro">
-    <p>I build and ship machine learning systems end to end: training models in PyTorch, optimizing them for inference, and deploying them behind real infrastructure. My work spans computer vision, generative models, and reinforcement learning, with a strong focus on performance, scalable training, and production deployment (ONNX, CoreML, Docker, AWS, FastAPI).</p>
-    <p>Currently a research assistant on synthetic driving data for autonomous systems at Indiana University. I came to ML from software engineering (production backend work in enterprise banking before a master's in AI), and I'm comfortable owning a model from experiment to deployment.</p>
+    <p>I build and ship AI products end to end: training models in PyTorch, optimizing them for inference, and deploying them behind real services and the interfaces people actually use. My work spans computer vision, generative models, reinforcement learning, and applied data science, with a strong focus on performance, scalable training, and production deployment (ONNX, CoreML, Docker, AWS, FastAPI).</p>
+    <p>Currently a research assistant on synthetic driving data for autonomous systems at Indiana University. I came to AI from software engineering (production backend work in enterprise banking before a master's in AI), so I am comfortable owning a system from data and experiment through to deployment and the product around it.</p>
   </div>
 
   <section>
@@ -312,6 +329,40 @@
   <section>
     <div class="label">Projects</div>
 
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/Video-talk-and-search">ScoutVideo</a></p>
+      <div class="when">2026</div>
+      <p class="desc">A real-time voice agent for talking to and searching across a whole video collection: you speak, it watches, answers questions about what is on screen, and surfaces the moment or scene you ask for. Browser mic to speech-to-text, a routing layer, a vision-language model, and streamed text-to-speech, with barge-in so you can interrupt mid-sentence. A zero-temperature <strong>router</strong> sends every utterance to the right specialist, so the model that can actually see answers what-is-visible questions instead of the text model guessing from memory, while retrieval questions go to hybrid Graph-RAG over FalkorDB (vector KNN plus graph hops in one Cypher query). The demo runs on nuScenes driving footage, with ego- and lead-vehicle motion read from telemetry as ground truth rather than pixels. Four models are self-hosted with vLLM across university GPUs over SSH tunnels.</p>
+      <figure class="fig">
+        <div class="embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/LNoaSj1P6dU"
+                  title="ScoutVideo demo"
+                  loading="lazy" allowfullscreen
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <figcaption>Asking about a live scene by voice: the router sends visual questions to the vision model and motion questions to telemetry, and the specialist's own words are spoken straight back.</figcaption>
+      </figure>
+      <div class="stack"><span>LangGraph</span><span>vLLM</span><span>Cosmos-Reason2</span><span>Qwen3</span><span>FalkorDB</span><span>Whisper</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/IU-NICC_Grounded-Theory-Project">LLM-Assisted Grounded Theory</a></p>
+      <div class="when">Oct 2024 – Dec 2024</div>
+      <p class="desc">An LLM-assisted retrieval and knowledge-graph system for grounded-theory qualitative research, built with researchers at NICC Brussels. Extracts knowledge graphs from interview transcripts and supports <strong>source-traceable</strong> querying across 200+ documents, pairing vector embeddings with graph-backed retrieval so every answer traces back to its origin passage.</p>
+      <div class="stack"><span>Python</span><span>LLMs</span><span>LlamaIndex</span><span>Neo4j</span><span>Pinecone</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head">ComicPaliGemma: a Vision-Language Model from scratch</p>
+      <div class="when">2025</div>
+      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM (SigLIP ViT vision encoder plus a Gemma decoder), validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5 to 10× faster inference</strong> than standard PyTorch attention.</p>
+      <figure class="fig">
+        <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
+        <figcaption>The model narrating a sequence of comic panels: the vision encoder reads the panels, the decoder generates the story text.</figcaption>
+      </figure>
+      <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
+    </div>
+  
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/re-diffusion">re-diffusion</a></p>
       <div class="when">2025 – present</div>
@@ -362,13 +413,6 @@
     </div>
 
     <div class="row">
-      <p class="head"><a href="https://github.com/Aaronaferns/IU-NICC_Grounded-Theory-Project">LLM-Assisted Grounded Theory</a></p>
-      <div class="when">Oct 2024 – Dec 2024</div>
-      <p class="desc">An LLM-assisted retrieval and knowledge-graph system for grounded-theory qualitative research, built with researchers at NICC Brussels. Extracts knowledge graphs from interview transcripts and supports <strong>source-traceable</strong> querying across 200+ documents, pairing vector embeddings with graph-backed retrieval so every answer traces back to its origin passage.</p>
-      <div class="stack"><span>Python</span><span>LLMs</span><span>LlamaIndex</span><span>Neo4j</span><span>Pinecone</span></div>
-    </div>
-
-    <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/multi-goal-rl-svgg">Multi-Goal RL with SVGG</a></p>
       <div class="when">2025</div>
       <p class="desc">Goal-conditioned reinforcement learning combining Soft Actor-Critic, Hindsight Experience Replay, and Stein Variational Goal Generation for curriculum-style goal sampling in sparse-reward robotics environments like FetchReach. Hydra-configured, W&B-tracked.</p>
@@ -389,18 +433,7 @@
       </figure>
       <div class="stack"><span>MPC</span><span>World Models</span><span>CEM</span><span>Gymnasium</span></div>
     </div>
-
-    <div class="row">
-      <p class="head">ComicPaliGemma: a Vision-Language Model from scratch</p>
-      <div class="when">2025</div>
-      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM (SigLIP ViT vision encoder plus a Gemma decoder), validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5 to 10× faster inference</strong> than standard PyTorch attention.</p>
-      <figure class="fig">
-        <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
-        <figcaption>The model narrating a sequence of comic panels: the vision encoder reads the panels, the decoder generates the story text.</figcaption>
-      </figure>
-      <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
-    </div>
-  </section>
+</section>
 
   <section>
     <div class="label">Machine learning experience</div>
