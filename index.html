@@ -277,7 +277,7 @@
            onerror="this.style.display='none'">
       <div class="who">
         <h1>Aaron Leevord Fernandes</h1>
-        <p class="role">Full-stack AI software engineer, ML engineer, and data scientist. I take AI systems end to end, from data and models to the backend, infrastructure, and product they run in.</p>
+        <p class="role">ML engineer, ML Research. I take AI systems end to end, from data and models to the backend, infrastructure, and product they run in.</p>
       </div>
     </div>
     <p class="meta">
@@ -352,17 +352,7 @@
       <div class="stack"><span>Python</span><span>LLMs</span><span>LlamaIndex</span><span>Neo4j</span><span>Pinecone</span></div>
     </div>
 
-    <div class="row">
-      <p class="head">ComicPaliGemma: a Vision-Language Model from scratch</p>
-      <div class="when">2025</div>
-      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM (SigLIP ViT vision encoder plus a Gemma decoder), validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5 to 10× faster inference</strong> than standard PyTorch attention.</p>
-      <figure class="fig">
-        <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
-        <figcaption>The model narrating a sequence of comic panels: the vision encoder reads the panels, the decoder generates the story text.</figcaption>
-      </figure>
-      <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
-    </div>
-  
+    
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/re-diffusion">re-diffusion</a></p>
       <div class="when">2025 – present</div>
@@ -411,6 +401,17 @@
       </figure>
       <div class="stack"><span>PyTorch</span><span>ViT-B/16</span><span>Capsule Net</span><span>GMM</span></div>
     </div>
+    <div class="row">
+      <p class="head">ComicPaliGemma: a Vision-Language Model from scratch</p>
+      <div class="when">2025</div>
+      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM (SigLIP ViT vision encoder plus a Gemma decoder), validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5 to 10× faster inference</strong> than standard PyTorch attention.</p>
+      <figure class="fig">
+        <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
+        <figcaption>The model narrating a sequence of comic panels: the vision encoder reads the panels, the decoder generates the story text.</figcaption>
+      </figure>
+      <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
+    </div>
+  
 
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/multi-goal-rl-svgg">Multi-Goal RL with SVGG</a></p>
