@@ -68,6 +68,7 @@
   }
   .meta a{color:var(--mut);}
   .meta .sep{color:var(--faint);padding:0 8px;}
+  .old{color:var(--faint);font-size:0.92em;margin-left:4px;}
 
   /* intro */
   .intro{margin:34px 0 8px;}
@@ -162,6 +163,8 @@
     font-size:12px;
     color:var(--faint);
     letter-spacing:0.02em;
+    display:flex;
+    flex-wrap:wrap;
   }
   .row .stack span{white-space:nowrap;}
   .row .stack span::after{content:"·";padding:0 7px;color:#d0d0d0;}
@@ -277,51 +280,52 @@
            onerror="this.style.display='none'">
       <div class="who">
         <h1>Aaron Leevord Fernandes</h1>
-        <p class="role">ML engineer, ML Research. I take AI systems end to end, from data and models to the backend, infrastructure, and product they run in.</p>
+        <p class="role">ML and software engineer: AI agents, recommendation, reinforcement learning.</p>
       </div>
     </div>
     <p class="meta">
-      <a href="mailto:aaron.fernandes.ml@gmail.com">aaron.fernandes.ml@gmail.com</a>
+      <a href="mailto:aaronferns38@outlook.com">aaronferns38@outlook.com</a>
+      <span class="old">(old: aaron.fernandes.ml@gmail.com)</span>
       <span class="sep">/</span>
       <a href="https://github.com/Aaronaferns">github</a>
       <span class="sep">/</span>
       <a href="https://linkedin.com/in/aaron-leevord-fernandes">linkedin</a>
       <span class="sep">/</span>
-      <a href="/Resume_Aaron_Fernandes.pdf">resume</a>
+      <a href="/Aaron_Fernandes_Resume.pdf">resume</a>
     </p>
   </header>
 
   <div class="intro">
-    <p>I work across the full stack of AI systems: training models in PyTorch, building the data and inference pipelines around them, and writing the backends, APIs, and interfaces that turn them into products people can actually use. That spans generative models, computer vision, reinforcement learning, LLM and retrieval systems, and applied data science, with a real focus on performance, scalable training, and production deployment (ONNX, CoreML, Docker, AWS, FastAPI, vLLM).</p>
-    <p>Currently a research assistant on synthetic driving data for autonomous systems at Indiana University. I came to AI from software engineering (production backend work in enterprise banking before a master's in AI), so I am comfortable owning a system from data and experiment through to deployment and the product around it.</p>
+    <p>I build AI agents, recommendation and reinforcement learning models, and the evaluation that tells me whether they actually work. Most of what I make runs end to end: the model, the data pipeline around it, and the backend that puts it in front of people. I work mostly in Python and PyTorch, with Java, Node.js, Docker and AWS on the service side.</p>
+    <p>Until July 2026 I was a research engineer at Indiana University, most recently benchmarking image and video generation models for autonomous driving on an Astemo-sponsored project. Before my master's I wrote Java services for HDFC Bank at TCS.</p>
   </div>
 
   <section>
     <div class="label">Path</div>
     <ul class="path">
       <li>
-        <span class="yr">2026 – now</span>
-        <span class="what"><b>Graduate Research Assistant, Astemo × Indiana University</b>, working on generative models for autonomous driving: image editing &amp; generation, video / driving world models, vLLM-Omni multimodal inference, and geometry &amp; computer-vision benchmarking to validate synthetic data. <span class="muted">Earlier in 2026: backend engineering at Heartland.</span></span>
+        <span class="yr">2026</span>
+        <span class="what"><b>Research Engineer, SMART Lab, Indiana University</b>, benchmarking 8+ image-editing and video-generation models on driving data for Astemo Americas. <span class="muted">Earlier in 2026: backend work at Heartland Community Network. Since then: the agent, recommender and benchmark projects below.</span></span>
       </li>
       <li>
         <span class="yr">2024 – 2025</span>
-        <span class="what"><b>ML engineering &amp; research</b>, spanning computer vision at Leung Research Group and reinforcement learning at Indiana University.</span>
+        <span class="what"><b>Research engineering at Indiana University</b>: optical simulation surrogates and OCT imaging at the Leung Research Group, and goal-conditioned reinforcement learning.</span>
       </li>
       <li>
         <span class="yr">2024</span>
-        <span class="what"><b>NCAA Women's Basketball Prediction</b>, a Random Forest tournament model; ranked <b>top 5 of 67</b> in a national competition.</span>
+        <span class="what"><b>NCAA ticket-sales forecasting</b> with Random Forests; placed <b>top 5</b> in a national analytics competition.</span>
       </li>
       <li>
         <span class="yr">2023 – 2025</span>
-        <span class="what"><b>M.S. Intelligent Systems Engineering, Indiana University Bloomington</b> <span class="muted">(GPA 3.9)</span>. The pivot into AI: computer vision, diffusion, reinforcement learning.</span>
+        <span class="what"><b>M.S. Intelligent Systems Engineering, Indiana University Bloomington</b> <span class="muted">(GPA 3.9)</span>. The move into AI: computer vision, diffusion, reinforcement learning.</span>
       </li>
       <li>
         <span class="yr">2022 – 2023</span>
-        <span class="what"><b>Software Engineer, Tata Consultancy Services</b>, building Java / Spring Boot microservices for HDFC Bank <span class="muted">(100K+ daily transactions)</span>.</span>
+        <span class="what"><b>Software Engineer, Tata Consultancy Services</b>, writing Java and Spring Boot microservices for HDFC Bank's transaction processing.</span>
       </li>
       <li>
         <span class="yr">2017 – 2021</span>
-        <span class="what"><b>B.S. Electronics &amp; Telecommunications, Goa College of Engineering</b>. Networking &amp; IoT; built a fuzzer for the Contiki IoT operating system.</span>
+        <span class="what"><b>B.E. Electronics and Telecommunication, Goa College of Engineering</b>. Networking and IoT.</span>
       </li>
     </ul>
   </section>
@@ -330,9 +334,20 @@
     <div class="label">Projects</div>
 
     <div class="row">
-      <p class="head"><a href="https://github.com/Aaronaferns/Video-talk-and-search">ScoutVideo</a></p>
+      <p class="head"><a href="https://github.com/Aaronaferns/cua-replay">Computer-Use Automation System</a></p>
+      <div class="when">Sep – Oct 2026</div>
+      <p class="desc">An AI agent (Claude, driving a real browser through Playwright) learns a task in an old web ERP once. That run is compiled into a typed file a person reviews and signs off on, and from then on a plain interpreter replays it with <strong>no model in the loop</strong>, so repeat runs cost nothing in model calls. The task posts payments, so it is built to fail safe: a SQLite ledger records intent before every click and <strong>never posts a payment twice</strong>, a lost response goes to a person instead of being retried, the model never sees real credentials, and anything off the approved action list is blocked. An operator can take over the same live browser mid-run. Tested against Dolibarr with injected network faults, with Dolibarr's own API as the referee: 33 of 33 lookup runs and 5 of 5 payment cases passed, backed by 850+ automated tests.</p>
+      <figure class="fig">
+        <img src="/assets/projects/new/cua-timeline.png" alt="Timeline of an agent discovery run looking up a customer's outstanding bill">
+        <figcaption>One discovery run: the model finds a customer's outstanding bill in five steps, with 11 off-limits network requests blocked along the way. After review, this run replays with no model.</figcaption>
+      </figure>
+      <div class="stack"><span>Python</span><span>Playwright</span><span>Claude API</span><span>FastAPI</span><span>Pydantic</span><span>SQLite</span><span>Docker</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/ScoutVideo">ScoutVideo</a></p>
       <div class="when">2026</div>
-      <p class="desc">A real-time voice agent for talking to and searching across a whole video collection: you speak, it watches, answers questions about what is on screen, and surfaces the moment or scene you ask for. Browser mic to speech-to-text, a routing layer, a vision-language model, and streamed text-to-speech, with barge-in so you can interrupt mid-sentence. A zero-temperature <strong>router</strong> sends every utterance to the right specialist, so the model that can actually see answers what-is-visible questions instead of the text model guessing from memory, while retrieval questions go to hybrid Graph-RAG over FalkorDB (vector KNN plus graph hops in one Cypher query). The demo runs on nuScenes driving footage, with ego- and lead-vehicle motion read from telemetry as ground truth rather than pixels. Four models are self-hosted with vLLM across university GPUs over SSH tunnels.</p>
+      <p class="desc">A voice agent you can talk to about driving footage. You speak, it answers about what is on screen or finds the moment you describe, and it stops talking about a quarter second after you cut in. A zero-temperature <strong>router</strong> sends frame, video, comparison and search questions straight to the right tool; everything else goes to Qwen3-8B with six tools it can call. Vision questions go to Cosmos-Reason2, which keeps frames out of the chat context. Scene search runs over a FalkorDB knowledge graph of nuScenes scenes (559 nodes, 1,790 edges) built straight from the raw dataset tables. Questions about whether the car is turning are answered from its recorded motion data, because a front camera can't see its own car turn.</p>
       <figure class="fig">
         <div class="embed">
           <iframe src="https://www.youtube-nocookie.com/embed/LNoaSj1P6dU"
@@ -342,21 +357,31 @@
         </div>
         <figcaption>Asking about a live scene by voice: the router sends visual questions to the vision model and motion questions to telemetry, and the specialist's own words are spoken straight back.</figcaption>
       </figure>
-      <div class="stack"><span>LangGraph</span><span>vLLM</span><span>Cosmos-Reason2</span><span>Qwen3</span><span>FalkorDB</span><span>Whisper</span></div>
+      <div class="stack"><span>LangGraph</span><span>vLLM</span><span>Qwen3-8B</span><span>Cosmos-Reason2</span><span>FalkorDB</span><span>faster-whisper</span></div>
     </div>
 
     <div class="row">
-      <p class="head"><a href="https://github.com/Aaronaferns/IU-NICC_Grounded-Theory-Project">LLM-Assisted Grounded Theory</a></p>
-      <div class="when">Oct 2024 – Dec 2024</div>
-      <p class="desc">An LLM-assisted retrieval and knowledge-graph system for grounded-theory qualitative research, built with researchers at NICC Brussels. Extracts knowledge graphs from interview transcripts and supports <strong>source-traceable</strong> querying across 200+ documents, pairing vector embeddings with graph-backed retrieval so every answer traces back to its origin passage.</p>
-      <div class="stack"><span>Python</span><span>LLMs</span><span>LlamaIndex</span><span>Neo4j</span><span>Pinecone</span></div>
+      <p class="head">Next-Item Recommendation (RePrior-Rec)</p>
+      <div class="when">2026</div>
+      <p class="desc">Given a shopper's history, predict the first new item they will touch in the next week, ranking all 42,250 items in the catalog with no sampled shortcuts. I compared 18 models on 2.8 million RetailRocket events, from popularity counts and session kNN to SASRec, EASE and transformers with RL heads, each scored once on a held-out week with bootstrap error bars. My hybrid, RePrior-Rec, is a transformer that learns a correction to a simpler EASE recommender, with a copy head for repeat visits. It beat the strongest baseline by <strong>14%</strong>, and an XGBoost reranker on top scored best overall. The breakdown taught me more than the headline: about 62% of the new model's score came from the 9% of shoppers returning to something they had already viewed, and swapping RL objectives moved results by less than the error bars.</p>
+      <figure class="fig">
+        <img src="/assets/projects/new/reprior-rec.png" alt="Test NDCG@10 for five recommenders">
+        <figcaption>Test NDCG@10, higher is better. Black is the new model. The gain comes from the architecture, not the RL objective.</figcaption>
+      </figure>
+      <div class="stack"><span>Python</span><span>PyTorch</span><span>XGBoost</span><span>pandas</span></div>
     </div>
 
-    
+    <div class="row">
+      <p class="head">LedgerBench</p>
+      <div class="when">Oct 2026</div>
+      <p class="desc">A small benchmark for LLM agents, built so I could trust its scores. 40 ledger tasks, each gold answer computed twice by separate code, plus an LLM judge that grades one rubric item per call. Fake models went through first: a perfect answer had to score full marks, and empty, hedged or prompt-injection answers had to score zero. Scores cover pass@1, pass@k and pass^k with Wilson, bootstrap and task-clustered intervals, and a power analysis showed 40 tasks can only catch gaps of about 15 points. Claude Haiku and Sonnet both solved all 40, Haiku at under half the cost per solved task, so the next version needs harder tasks.</p>
+      <div class="stack"><span>Python</span><span>asyncio</span><span>Claude API</span><span>Statistics</span></div>
+    </div>
+
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/re-diffusion">re-diffusion</a></p>
-      <div class="when">2025 – present</div>
-      <p class="desc">A from-scratch latent Diffusion Transformer trained with rectified flow on 2M LAION-Aesthetics images. Attention, AdaLN-Zero conditioning, patchify, the rectified-flow objective, Euler sampler, and classifier-free guidance are all hand-written (~600 lines). A profiler-driven attention fix gave <strong>2.2× throughput and 2× less memory</strong>; streaming data pipeline measured at 757 imgs/s over 1,976 WebDataset shards.</p>
+      <div class="when">2025 – 2026</div>
+      <p class="desc">A 254M-parameter latent Diffusion Transformer written from scratch: attention, AdaLN-Zero conditioning, patchify and the rectified-flow math by hand, with only the VAE and CLIP text encoder pretrained. Run on about 2 million LAION-Aesthetics images with DDP and DeepSpeed. Profiling showed the data pipeline was never the problem (757 images/s against a model using about 26) and hand-written fp32 attention was. Swapping in fused attention gave <strong>2.2× throughput and half the peak memory</strong>.</p>
       <figure class="fig">
         <img src="/re-diffusion/assets/figures/gpu_time_share.png" alt="Share of CUDA time per step across pipeline stages">
         <figcaption>Where the profiler pointed: 42% of every step re-encodes frozen VAE/CLIP models (precomputable), and fp32 attention dominated the trainable cost.</figcaption>
@@ -371,9 +396,16 @@
       </figure>
       <figure class="fig">
         <img src="/re-diffusion/assets/figures/scaling.png" alt="Data-parallel scaling across GPUs">
-        <figcaption>Multi-GPU: 86% data-parallel scaling efficiency under DeepSpeed ZeRO-2, with NCCL all-reduce at just 13% of CUDA time.</figcaption>
+        <figcaption>Two GPUs: 86% data-parallel scaling efficiency under DeepSpeed ZeRO-2, with NCCL all-reduce at about 13% of CUDA time.</figcaption>
       </figure>
       <div class="stack"><span>PyTorch</span><span>MM-DiT</span><span>Rectified Flow</span><span>DeepSpeed ZeRO-2</span><span>Slurm</span></div>
+    </div>
+
+    <div class="row">
+      <p class="head"><a href="https://github.com/Aaronaferns/IU-NICC_Grounded-Theory-Project">LLM-Assisted Grounded Theory</a></p>
+      <div class="when">Oct 2024 – Dec 2024</div>
+      <p class="desc">A team class project with researchers at NICC Brussels, who were coding interview transcripts by hand. The pipeline turns transcripts into a knowledge graph in Neo4j with LlamaIndex, and an OpenAI model suggests codes for passages that a researcher then reviews.</p>
+      <div class="stack"><span>Python</span><span>OpenAI API</span><span>LlamaIndex</span><span>Neo4j</span><span>LangChain</span></div>
     </div>
 
     <div class="row">
@@ -394,29 +426,18 @@
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/vit-unsupervised-anomaly-detection">Unsupervised Industrial Anomaly Detection</a></p>
       <div class="when">2024 – 2025</div>
-      <p class="desc">A Vision Transformer autoencoder with a Capsule Network and Gaussian mixture scoring for detecting and localizing defects in industrial imagery. Trained on the BeanTech (BTAD) dataset, improving AUROC from <strong>0.78 to 0.94</strong> over ResNet-50 baselines.</p>
+      <p class="desc">A Vision Transformer autoencoder with capsule layers and a 10-component Gaussian mixture density model for finding and locating defects in industrial images, adapted from VT-ADL. On the BeanTech (BTAD) dataset it reached <strong>0.94 AUROC</strong>, against 0.78 for a ResNet-50 baseline.</p>
       <figure class="fig">
         <img src="/vit-unsupervised-anomaly-detection/ViTloss.png" alt="Training losses: total, SSIM, reconstruction, and MDN">
         <figcaption>Training curves: total, SSIM, reconstruction, and MDN losses converging over training steps.</figcaption>
       </figure>
-      <div class="stack"><span>PyTorch</span><span>ViT-B/16</span><span>Capsule Net</span><span>GMM</span></div>
+      <div class="stack"><span>PyTorch</span><span>ViT</span><span>Capsule Net</span><span>GMM</span></div>
     </div>
-    <div class="row">
-      <p class="head">ComicPaliGemma: a Vision-Language Model from scratch</p>
-      <div class="when">2025</div>
-      <p class="desc">A from-scratch implementation of Google's PaliGemma VLM (SigLIP ViT vision encoder plus a Gemma decoder), validated against the full pretrained checkpoint. Fine-tuned on 5K+ comic panels with 4-bit <strong>QLoRA</strong> to cut peak VRAM by <strong>65%</strong>, with a long-context autoregressive generator producing coherent narration across 10+ panels. Custom Triton / FlashAttention-2-style kernels gave <strong>5 to 10× faster inference</strong> than standard PyTorch attention.</p>
-      <figure class="fig">
-        <img src="/comic_paligemma.png" alt="The VLM narrating a sequence of comic panels">
-        <figcaption>The model narrating a sequence of comic panels: the vision encoder reads the panels, the decoder generates the story text.</figcaption>
-      </figure>
-      <div class="stack"><span>PyTorch</span><span>SigLIP + Gemma</span><span>QLoRA</span><span>Triton / FlashAttention-2</span><span>HuggingFace</span></div>
-    </div>
-  
 
     <div class="row">
       <p class="head"><a href="https://github.com/Aaronaferns/multi-goal-rl-svgg">Multi-Goal RL with SVGG</a></p>
       <div class="when">2025</div>
-      <p class="desc">Goal-conditioned reinforcement learning combining Soft Actor-Critic, Hindsight Experience Replay, and Stein Variational Goal Generation for curriculum-style goal sampling in sparse-reward robotics environments like FetchReach. Hydra-configured, W&B-tracked.</p>
+      <p class="desc">Goal-conditioned reinforcement learning combining Soft Actor-Critic, Hindsight Experience Replay, and Stein Variational Goal Generation for curriculum-style goal sampling in sparse-reward robotics environments like FetchReach. Hydra-configured, W&amp;B-tracked.</p>
       <div class="stack"><span>PyTorch</span><span>SAC</span><span>HER</span><span>SVGG</span><span>Hydra</span></div>
     </div>
 
@@ -441,34 +462,51 @@
 
     <div class="tl">
       <div class="tl-item">
-        <p class="when2">Apr 2024 – Dec 2025</p>
-        <h3>Machine Learning Engineer, Computer Vision</h3>
-        <p class="org">Leung Research Group</p>
-        <p class="note">Self-supervised vision and computational imaging for OCT video-to-histology translation. Built U-Net surrogate models approximating FDTD optical simulations on HPC (SLURM/Linux), cutting inference from ~3 min to sub-second while holding SSIM &gt; 0.85.</p>
+        <p class="when2">Mar 2026 – Jul 2026</p>
+        <h3>Research Engineer, Generative Models for Driving</h3>
+        <p class="org">SMART Lab, Indiana University (sponsored by Astemo Americas)</p>
+        <p class="note">Benchmarked 8+ image-editing and video-generation models on nuScenes and Argoverse, and wrote the PyTorch pipeline behind it: data prep, inference across several GPUs with vLLM-Omni, and automatic scoring. Designed the geometry and realism metrics from Grounding DINO and FoundationGeo estimates, and checked them on real frames against LiDAR depth and 3D boxes before scoring any generated one. They became the benchmark's main comparison. Wrote up the metrics and failure cases for the sponsor and contributed experiments to a paper now under review.</p>
+      </div>
+
+      <div class="tl-item">
+        <p class="when2">Jan 2026 – Apr 2026</p>
+        <h3>Software Engineer (contract)</h3>
+        <p class="org">Heartland Community Network (CHOMP)</p>
+        <p class="note">Joined a small team before launch and built Node.js and Express services on AWS for recommendations, event-driven analytics and scheduled jobs. After go-live, added logging and monitoring and tracked production issues down to their root cause.</p>
       </div>
 
       <div class="tl-item">
         <p class="when2">Jan 2025 – Jun 2025</p>
-        <h3>Machine Learning Engineer, Reinforcement Learning</h3>
+        <h3>Research Engineer, Reinforcement Learning</h3>
         <p class="org">Indiana University</p>
-        <p class="note">Goal-conditioned RL (HER, curriculum policy optimization) for sparse-reward navigation, with experiment infrastructure orchestrating 100+ multi-seed runs via Hydra, MLflow, and W&B.</p>
+        <p class="note">Built custom PointMaze tasks in MuJoCo for goal-conditioned RL. Adding hindsight experience replay to Soft Actor-Critic raised task success from 15% to 55%. Ran 100+ multi-seed experiments with Hydra, MLflow and W&amp;B.</p>
       </div>
 
-      <div class="tl-item now">
-        <p class="when2">Mar 2026 – present</p>
-        <h3>Graduate Research Assistant, Synthetic Driving Data</h3>
-        <p class="org">Indiana University (Astemo-sponsored)</p>
-        <p class="note">Building and benchmarking generative systems for autonomous driving: diffusion-based image editing and generation, video generation, and driving world models for synthetic data. Serving large-scale multimodal inference with vLLM-Omni, and applying geometry- and computer-vision-based benchmarking and validation to ensure the generated data is good enough to train on.</p>
+      <div class="tl-item">
+        <p class="when2">Apr 2024 – Dec 2025</p>
+        <h3>Research Engineer, Computational Imaging</h3>
+        <p class="org">Leung Research Group, Indiana University</p>
+        <p class="note">Trained U-Net surrogates for Lumerical FDTD optical simulations on one metasurface family, cutting a roughly three-minute solve to under a second while holding SSIM above 0.85, using 5,000+ simulations run on a Slurm cluster. Also built a pipeline that turns time-series OCT videos of tissue into histology-equivalent images.</p>
+      </div>
+
+      <div class="tl-item">
+        <p class="when2">Jan 2022 – Jan 2023</p>
+        <h3>Software Engineer</h3>
+        <p class="org">Tata Consultancy Services (client: HDFC Bank)</p>
+        <p class="note">Wrote Java and Spring Boot microservices, REST APIs and the SQL behind HDFC Bank's transaction processing, automated reconciliation in batch jobs, and worked with QA and infrastructure teams on releases and incidents.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <a href="mailto:aaron.fernandes.ml@gmail.com">aaron.fernandes.ml@gmail.com</a>
+    <a href="mailto:aaronferns38@outlook.com">aaronferns38@outlook.com</a>
+    <span class="old">(old: aaron.fernandes.ml@gmail.com)</span>
     <span class="sep">/</span>
     <a href="https://github.com/Aaronaferns">github.com/Aaronaferns</a>
     <span class="sep">/</span>
     <a href="https://linkedin.com/in/aaron-leevord-fernandes">linkedin</a>
+    <span class="sep">/</span>
+    <a href="/Aaron_Fernandes_Resume.pdf">resume</a>
   </footer>
 
 </div>
